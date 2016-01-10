@@ -1,0 +1,18 @@
+<div id="unitservices-stage" class="container"  >    
+    <div class="row">
+        <div class="sidebar col-md-4">            
+            <div class="list-group">
+                <a class="list-group-item active">
+                    Unit Services
+                </a>
+                <a [routerLink]=" ['UnitDashboard']" class="list-group-item">Dashboard</a>
+                <a [routerLink]=" ['Units']" class="list-group-item">Unit Inventory</a>
+                <a [routerLink]=" ['UnitDashboard']" class="list-group-item">Plates</a>
+                <a [routerLink]=" ['Units']" class="list-group-item">Locations</a>
+            </div>
+        </div>
+        <div class="mainstage col-md-8">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
