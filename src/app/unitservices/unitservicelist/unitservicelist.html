@@ -1,22 +1,27 @@
 <div class="unitservice-listgroup list-group hidden-xs hidden-sm visible-md-block visible-lg-block" >    
     <a [routerLink]=" ['UnitDashboard']" class="list-group-item">
-        <span class="glyphicon glyphicon-stats" aria-hidden="true">
+        <span class="fa fa-bar-chart" aria-hidden="true">
             <span class="hidden-xs"> Overview</span>
         </span>
     </a>      
     <a [routerLink]=" ['Units']" class="list-group-item"> 
-        <span class="glyphicon glyphicon-list-alt" aria-hidden="true">
+        <span class="fa fa-list-alt" aria-hidden="true">
              <span class="hidden-xs"> Unit Inventory</span>
         </span>
     </a>
-    <a [routerLink]=" ['UnitDashboard']" class="list-group-item">
-        <span class="glyphicon glyphicon-barcode" aria-hidden="true">
+    <a [routerLink]=" ['Units']" class="list-group-item">
+        <span class="fa fa-barcode" aria-hidden="true">
                  <span class="hidden-xs"> Plates</span>
         </span>
     </a>
     <a [routerLink]=" ['Units']" class="list-group-item">
-        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"> 
+        <span class="fa fa-map-marker" aria-hidden="true"> 
                      <span class="hidden-xs"> Locations</span>
+        </span>
+    </a>
+    <a [routerLink]=" ['Units']" class="list-group-item">
+        <span class="fa fa-users" aria-hidden="true"> 
+                     <span class="hidden-xs"> Drivers</span>
         </span>
     </a>
 </div>
@@ -24,29 +29,36 @@
 <div class="unitservice-buttongroup btn-group btn-group-justified visible-xs-block visible-sm-block hidden-md hidden-lg" role="group" aria-label="..." >               
   <div class="btn-group" role="group">
     <a [routerLink]=" ['UnitDashboard']" class="list-group-item">
-        <span class="glyphicon glyphicon-stats" aria-hidden="true">
+        <span class="fa fa-bar-chart" aria-hidden="true">
             <span class="hidden-xs"> Overview</span>
         </span>
     </a>
   </div>
   <div class="btn-group" role="group">
     <a [routerLink]=" ['Units']" class="list-group-item"> 
-        <span class="glyphicon glyphicon-list-alt" aria-hidden="true">
+        <span class="fa fa-list-alt" aria-hidden="true">
              <span class="hidden-xs"> Unit Inventory</span>
         </span>
     </a>
   </div>
   <div class="btn-group" role="group">
-    <a [routerLink]=" ['UnitDashboard']" class="list-group-item">
-        <span class="glyphicon glyphicon-barcode" aria-hidden="true">
+    <a [routerLink]=" ['Units']" class="list-group-item">
+        <span class="fa fa-barcode" aria-hidden="true">
                  <span class="hidden-xs"> Plates</span>
         </span>
     </a>
   </div>
    <div class="btn-group" role="group">
     <a [routerLink]=" ['Units']" class="list-group-item">
-        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"> 
+        <span class="fa fa--map-marker" aria-hidden="true"> 
                      <span class="hidden-xs"> Locations</span>
+        </span>
+    </a>
+  </div> 
+   <div class="btn-group" role="group">
+    <a [routerLink]=" ['Units']" class="list-group-item">
+        <span class="fa fa-users" aria-hidden="true"> 
+                     <span class="hidden-xs"> Drivers</span>
         </span>
     </a>
   </div> 
