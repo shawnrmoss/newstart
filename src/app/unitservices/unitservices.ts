@@ -1,18 +1,20 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, RouterOutlet, ROUTER_DIRECTIVES} from 'angular2/router';
+import {UnitCentralServices} from './unitcentralservices.service';
 
 import {UnitDashboard} from './unitdashboard/unitdashboard';
 import {Units} from './units/units';
+import {UnitServiceList} from './unitservicelist/unitservicelist';
 
 import './unitservices.scss';
 
 @Component({
-  selector: 'unitservices',
-  providers: [ ],
-  directives: [ ...ROUTER_DIRECTIVES ],
-  pipes: [],
+  selector: 'unitservices',  
   styles: [],
-  template: require("./unitservices.html")
+  template: require("./unitservices.html"),
+  providers: [UnitCentralServices], 
+  pipes: [],
+  directives: [ ...ROUTER_DIRECTIVES, UnitServiceList ]
 })
 @RouteConfig([
   { path: '/', component: UnitDashboard, name: 'UnitDashboard', useAsDefault: true },

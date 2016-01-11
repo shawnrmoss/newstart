@@ -6,10 +6,11 @@ import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
+import './assets/scss/main.scss';
 /*
  * App Component
  * our top level component that holds all of our components
- */
+ */ 
 import {App} from './app/app';
 /*
  * Bootstrap our Angular app with a top level component `App` and inject

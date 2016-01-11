@@ -1,5 +1,7 @@
-@import './colors.scss';
+// Libs
+@import './lib/colors.scss';
+@import './lib/vars.scss';
 
-body{
-    background-color: #16171A;    
-}
+// Base.
+@import 'base/page';
+@import 'base/typography';

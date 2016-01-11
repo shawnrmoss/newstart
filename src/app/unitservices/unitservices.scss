@@ -1,15 +1,12 @@
-@import  '../../assets/scss/main.scss';
+@import '../../assets/scss/lib/vars.scss';
 
 #unitservices-stage{
     
-    div.sidebar{                
-        max-width: 300px;      
-        margin: 10px; 
-        margin-left: 5px;
+    div.sidebar{                                          
     }
     
-    div.mainstage{
-        color: purple;     
-        margin: 10px;             
+    div.mainstage{   
+        color: $palette-fg-alt;    
     }
+        
 }

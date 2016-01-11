@@ -1,5 +1,3 @@
-// @AngularClass
-
 /*
  * Helper: root(), and rootDir() are defined at the bottom
  */
@@ -13,7 +11,7 @@ var HtmlWebpackPlugin  = require('html-webpack-plugin');
 var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 var metadata = {
-  title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+  title: 'Newstart from @shawnrmoss',
   baseUrl: '/',
   host: 'localhost',
   port: 3343,
