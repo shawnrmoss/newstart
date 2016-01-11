@@ -1,0 +1,26 @@
+ <!-- Table -->
+<table class="table table-hover">
+    <tr>
+        <td>
+            ID
+        </td>
+        <td >
+            Year
+        </td>
+        <td>
+            Name
+        </td>
+    </tr>
+    <tr *ngFor="#unit of units"
+        (onclick)="onSelect(unit)" >
+        <td >
+            {{unit.id}}
+        </td>
+        <td>
+            {{unit.year}}
+        </td>
+        <td>
+            {{unit.name}}
+        </td>
+    </tr>                  
+</table>

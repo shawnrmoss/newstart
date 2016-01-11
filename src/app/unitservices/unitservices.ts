@@ -17,8 +17,8 @@ import './unitservices.scss';
   directives: [ ...ROUTER_DIRECTIVES, UnitServiceList ]
 })
 @RouteConfig([
-  { path: '/', component: UnitDashboard, name: 'UnitDashboard', useAsDefault: true },
-  { path: '/units', component: Units, name: 'Units' },
+  { path: '/', component: UnitDashboard, name: 'UnitDashboard', useAsDefault: true },  
+  { path: '/units/...', component: Units, name: 'Units' },
   { path: '/**', redirectTo: ['UnitDashboard'] }
 ])
 export class UnitServices {

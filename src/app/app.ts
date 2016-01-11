@@ -29,9 +29,7 @@ import '../assets/scss/main.scss';
   },
   { path: '/**', redirectTo: ['Index'] }
 ])
-export class App {
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
+export class App { 
   constructor() {
 
   }

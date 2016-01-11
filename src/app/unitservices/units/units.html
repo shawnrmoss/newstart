@@ -1,47 +1,36 @@
 
+<h2>Unit Overview</h2>  
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Unit Overview</h3>
+        <button (click)="addNewUnit()" type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
     </div>
     <div class="panel-body">
-        <p>Units.  We can search them and we're gonna like it.</p>
+        <blockquote>
+            Units.  We can search them and we're gonna like it.
+        </blockquote>        
+        <router-outlet></router-outlet>
+    </div>                
+    <div class="panel-footer">
+        <nav>
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            </ul>
+         </nav>
     </div>
-     <!-- Table -->
-    <table class="table">
-        <tr>
-            <td>
-                ID
-            </td>
-            <td >
-                Year
-            </td>
-            <td>
-                Name
-            </td>
-        </tr>
-        <tr >
-            <td >
-                1
-            </td>
-            <td>
-                2013
-            </td>
-            <td>
-                Ford F-150
-            </td>
-        </tr> 
-        <tr >
-            <td >
-                2
-            </td>
-            <td>
-                2016
-            </td>
-            <td>
-                Toyota Tundra
-            </td>
-        </tr> 
-            
-    </table>
-    <div class="panel-footer">Panel footer</div>
 </div>
