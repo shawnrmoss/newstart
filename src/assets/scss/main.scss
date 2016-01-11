@@ -5,3 +5,17 @@
 // Base.
 @import 'base/page';
 @import 'base/typography';
+
+
+.rollup-panel{
+    color: $palette-fg-alt;
+    
+    .panel-body{
+        min-height: 200px;
+        max-height: 200px;
+    }
+}
+
+.summit-list-group-header{
+    
+}
