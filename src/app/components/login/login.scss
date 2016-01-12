@@ -9,7 +9,34 @@ md-toolbar[md-hero] {
   fill: white;
 }
 
+
+[md-button] [md-icon] {
+  color: rgba(0,0,0,0.8);
+}
+md-card-content {
+  p {
+    margin-bottom: 15px;
+  }
+}
+
 button.signin-button {
     width:100%;
+    background-color: lawngreen;
+    color: #FFFFFF;
+}
+
+.secret-project {
+  width: 256px;
+  height: 256px;
+  font-size: 256px;
+  color: md-color($md-primary,900,0.6);
+}
+md-toolbar[md-hero] {
+  margin-bottom: 40px;
+}
+md-input-container > select {
+  margin: 0;
+  order: 2;
+  display: flex;
 }
 
