@@ -7,14 +7,8 @@ import './header.scss';
   template: require('./header.html'),
   directives: [MATERIAL_DIRECTIVES]
 })
-export class Header {
-   
+export class Header {   
   constructor(
       
-  ) {}
-  
-  ngOnInit() {
-    
-  }  
-  
+  ) {}      
 }

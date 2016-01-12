@@ -1,38 +1,16 @@
 import {Component} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
-import {Http} from 'angular2/http';
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
+import {MATERIAL_DIRECTIVES,MATERIAL_PROVIDERS} from 'ng2-material/all';
+import {ListBasicUsage} from '../common/list/list';
+import './home.scss';
 
 @Component({
-  // The selector is what angular internally uses
-  // for `document.querySelectorAll(selector)` in our index.html
-  // where, in this case, selector is the string 'app'
-  selector: 'home',  // <home></home>
-  // We need to tell Angular's Dependency Injection which providers are in our app.
-  providers: [
-    MATERIAL_PROVIDERS
-  ],
-  // We need to tell Angular's compiler which directives are in our template.
-  // Doing so will allow Angular to attach our behavior to an element
-  directives: [
-    ...FORM_DIRECTIVES,
-    MATERIAL_DIRECTIVES
-  ],
-  // We need to tell Angular's compiler which custom pipes are in our template.
-  pipes: [ ],
-  // Our list of styles in our component. We may add more to compose many styles together
-  styles: [ require('./home.css') ],
-  // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  template: require('./home.html')
+  selector: 'home',
+  template: require('./home.html'),
+  providers: [MATERIAL_PROVIDERS],
+  directives: [MATERIAL_DIRECTIVES, ListBasicUsage]
 })
-export class Home {
-  // TypeScript public modifiers
-  constructor(public http: Http) {
-
-  }
-
-  ngOnInit() {
-    console.log('hello Home component');
-  }
-
+export class Home {   
+  constructor(
+      
+  ) {}      
 }
