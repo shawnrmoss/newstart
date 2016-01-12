@@ -1,1 +1,9 @@
-@import '../../../assets/scss/main.scss';
+
+[md-button] [md-icon] {
+  color: rgba(0,0,0,0.8);
+}
+md-card-content {
+  p {
+    margin-bottom: 15px;
+  }
+}

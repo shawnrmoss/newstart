@@ -1,10 +1,7 @@
 import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {Http} from 'angular2/http';
-
-import {Title} from './providers/title';
-import {XLarge} from './directives/x-large';
-
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
 
 @Component({
   // The selector is what angular internally uses
@@ -13,13 +10,13 @@ import {XLarge} from './directives/x-large';
   selector: 'home',  // <home></home>
   // We need to tell Angular's Dependency Injection which providers are in our app.
   providers: [
-    Title
+    MATERIAL_PROVIDERS
   ],
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
   directives: [
     ...FORM_DIRECTIVES,
-    XLarge
+    MATERIAL_DIRECTIVES
   ],
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],
@@ -30,7 +27,7 @@ import {XLarge} from './directives/x-large';
 })
 export class Home {
   // TypeScript public modifiers
-  constructor(public title: Title, public http: Http) {
+  constructor(public http: Http) {
 
   }
 

@@ -7,6 +7,7 @@ import {FORM_PROVIDERS} from 'angular2/common';
 
 import {Home} from './home/home';
 import {UnitServices} from './unitservices/unitservices';
+import {Header} from './layout/header/header';
 
 import '../assets/scss/main.scss';
 /*
@@ -16,7 +17,7 @@ import '../assets/scss/main.scss';
 @Component({
   selector: 'app',
   providers: [ ...FORM_PROVIDERS ],
-  directives: [ ...ROUTER_DIRECTIVES ],
+  directives: [ ...ROUTER_DIRECTIVES, Header],
   pipes: [],
   styles: [],
   template: require("./app.html")

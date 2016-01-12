@@ -5,23 +5,3 @@
 // Base.
 @import 'base/page';
 @import 'base/typography';
-
-
-.rollup-panel{
-    color: $palette-fg-alt;
-    
-    .panel-body{
-        min-height: 200px;
-        max-height: 200px;
-        overflow-y: auto;  
-    }
-}
-
-.summit-list-group-header.list-group-item.active{
-    background-color: $palette-bg-alt;
-    border-color: $palette-bg-dark;
-    color: $palette-fg-dark-compliment;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-
