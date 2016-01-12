@@ -31,6 +31,5 @@ import 'rxjs';
 import 'jquery';
 import 'font-awesome-webpack';
 import 'bootstrap-webpack';
-import 'angular';
 import 'chart.js';
 import 'angular-chart.js';

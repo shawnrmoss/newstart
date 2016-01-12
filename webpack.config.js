@@ -14,7 +14,7 @@ var metadata = {
   title: 'Newstart from @shawnrmoss',
   baseUrl: '/',
   host: 'localhost',
-  port: 3343,
+  port: 3000,
   ENV: ENV
 };
 /*

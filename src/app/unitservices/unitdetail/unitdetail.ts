@@ -47,6 +47,6 @@ export class UnitDetail implements OnInit, CanDeactivate {
   }
   gotoUnits() {
     // Like <a [routerLink]="['UnitList']">Units</a>
-    this._router.navigate(['UnitList']);
+    this._router.navigate(['authenticatedapp']);
   }
 }
