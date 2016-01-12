@@ -34,6 +34,7 @@
     "postinstall": "./node_modules/.bin/typings install"
   },
   "dependencies": {
+    "angular-chart.js": "^0.8.8",
     "angular2": "2.0.0-beta.0",
     "bootstrap": "^3.3.6",
     "bootstrap-webpack": "0.0.5",
