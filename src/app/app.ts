@@ -2,10 +2,11 @@
  * Angular 2 decorators and services
  */
 import {Component} from 'angular2/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES, RouteConfig, ROUTER_PROVIDERS, RouterOutlet} from 'angular2/router';
+import {ProtectedDirective} from './directives/protected.directive';
 
-import {AuthenticatedApp} from './components/authenticatedapp/authenticatedapp';
-import {Login} from './components/login/login';
+import {HomePage} from './components/home-page/home-page';
+import {LoginPage} from '../accountservices/components/login-page/login-page';
 
 import '../assets/scss/main.scss';
 /*
@@ -13,16 +14,16 @@ import '../assets/scss/main.scss';
  * Top Level Component
  */
 @Component({
-  selector: 'app',  
-  directives: [ ...ROUTER_DIRECTIVES],  
-  template: require("./app.html")
+  selector: 'app',
+  directives: [ROUTER_DIRECTIVES, ProtectedDirective],
+  template: require('./app.html')
 })
 @RouteConfig([
-  { path: '/authenticatedapp/...', component: AuthenticatedApp, name: 'Authenticated' },
-  { path: '/login', component: Login, name: 'Login', useAsDefault: true },   
-  { path: '/**', redirectTo: ['Login'] }
+  { path: '/', component: HomePage, name: 'HomePage' },
+  { path: '/login', component: LoginPage, name: 'LoginPage', useAsDefault: true },
+  { path: '/**', redirectTo: ['LoginPage'] }
 ])
-export class App { 
+export class App {
   constructor() {
   }
 }

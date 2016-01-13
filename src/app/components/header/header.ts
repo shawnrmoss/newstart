@@ -4,7 +4,7 @@ import './header.scss';
 
 @Component({
   selector: 'header',
-  template: require('./header.html'), 
+  template: require('./header.html'),
   providers: [MATERIAL_PROVIDERS],
   directives: [MATERIAL_DIRECTIVES]
 })
