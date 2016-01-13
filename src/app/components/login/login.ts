@@ -64,6 +64,8 @@ export class Login {
                     
                     //Add router and redirect to authenticated app                    
                     this.router.navigate(['Authenticated']);
+                    
+                     this.router.navigate( ['Authenticated', { id: data['password'] }] );
                 },
                 err => this.logError(err.json().message),
                 () => console.log('Authentication Complete')

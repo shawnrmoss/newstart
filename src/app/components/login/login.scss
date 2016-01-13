@@ -8,21 +8,14 @@ md-toolbar[md-hero] {
   height: 256px;
   fill: white;
 }
-
+@import './../../../assets/scss/main';
 
 [md-button] [md-icon] {
   color: rgba(0,0,0,0.8);
 }
-md-card-content {
-  p {
-    margin-bottom: 15px;
-  }
-}
 
 button.signin-button {
-    width:100%;
-    background-color: lawngreen;
-    color: #FFFFFF;
+    width:100%;   
 }
 
 .secret-project {
