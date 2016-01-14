@@ -24,6 +24,8 @@ export class Unit {
     deletedOn: Date;
         
     //full constructor
+    constructor() {}
+    
     constructor(unitID: number, 
                 activePlateID: number, 
                 unitStatusID: number, 

@@ -1,0 +1,39 @@
+<form [ngFormModel]="loginForm"
+      (ngSubmit)="onSubmit(loginForm.value)" >
+    <md-input-container class="md-block">
+        <label for="customerName">Customer Name</label>
+        <input md-input 
+            ngControl="customerName" 
+            id="customerName" 
+            [(value)]="credentials.customerName">
+        <div md-messages="customerName">
+            <div md-message="required">This is required.</div>
+            <div md-message="maxlength">The customer name has to be less than 50 characters long.</div>
+        </div>
+    </md-input-container>      
+    <md-input-container class="md-block">
+        <label for="email">Email</label>
+        <input md-input 
+            type="email" 
+            ngControl="email" 
+            id="email" 
+            [(value)]="credentials.email" />
+        <div md-messages="email" role="alert">
+        <div md-message>Your email must be between 10 and 100 characters long and look like an e-mail address.</div>
+        </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+        <label for="password">Password</label>
+        <input md-input 
+            type="password" 
+            ngControl="password" 
+            id="password" 
+            [(value)]="credentials.password" />
+        <div md-messages="password" role="alert">
+        <div md-message>Password expresion that requires one lower case letter, one upper case letter, one digit, 6-13 length, and no spaces.</div>
+        </div>        
+    </md-input-container>     
+    <md-input-container class="md-block">
+        <button type="submit" md-raised-button class="md-raised md-primary" >Sign In</button>         
+    </md-input-container>           
+</form>

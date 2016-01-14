@@ -4,7 +4,7 @@ import {UnitService} from '../../services/unitservice';
 import {Unit} from '../../datatypes/unit';
 
 import {UnitTableContainer} from '../unittablecontainer/unittablecontainer';
-import {UnitDetail} from '../unitdetail/unitdetail';
+import {UnitDetailContainer} from '../unitdetailcontainer/unitdetailcontainer';
 
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
 import './units.scss';
@@ -17,17 +17,13 @@ import './units.scss';
 })
 @RouteConfig([
   { path: '/', component: UnitTableContainer, name: 'UnitTable', useAsDefault: true },
-  { path: '/new', component: UnitDetail, name: 'AddNewUnit' },
-  { path: '/:id', component: UnitDetail, name: 'EditUnit' },
+  { path: '/new', component: UnitDetailContainer, name: 'AddNewUnit' },
+  { path: '/:id', component: UnitDetailContainer, name: 'EditUnit' },
   { path: '/**', redirectTo: ['UnitTable'] }
 ])
 export class Units {
     
     constructor(
         public _router: Router
-    ) {}
-    
-    addUnit(){
-      this._router.navigate( ['AddNewUnit'] );
-    }
+    ) {}       
 }    

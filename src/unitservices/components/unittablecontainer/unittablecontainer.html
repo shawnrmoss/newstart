@@ -1,21 +1,24 @@
-
- 
-
-
 <md-card>    
-    <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">Units</span>
-        </md-card-title-text>
-    </md-card-title>
+    <md-toolbar>
+        <div class="md-toolbar-tools">       
+        <h2>
+            <span>Unit Inventory</span>
+        </h2>
+        <span flex></span>
+         <button md-button class="md-icon-button" aria-label="Search" (click)="onSearch()">
+            <i class="green" md-icon>search</i>
+        </button>  
+        <button md-button class="md-icon-button" aria-label="Add" (click)="onAdd()">
+            <i class="green" md-icon>add</i>
+        </button>     
+        </div>
+    </md-toolbar>
     <md-card-content >
         <div class="table-container">
             <unit-table ></unit-table>
         </div>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
-        <button md-button class="md-icon-button" aria-label="add">
-            <i md-icon>add</i>
-        </button>   
+        <h2>Paging Controls will go here </h2>
     </md-card-actions>
 </md-card> 
