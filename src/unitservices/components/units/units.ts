@@ -1,21 +1,25 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, RouterLink, Router, RouterOutlet, ROUTER_DIRECTIVES} from 'angular2/router';
-import {UnitCentralServices} from './../unitcentralservices.service';
+import {UnitService} from '../../services/unitservice';
+import {Unit} from '../../datatypes/unit';
 
-import {UnitList} from '../unitlist/unitlist';
+import {UnitTableContainer} from '../unittablecontainer/unittablecontainer';
 import {UnitDetail} from '../unitdetail/unitdetail';
+
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
+import './units.scss';
 
 @Component({
   selector: 'units',
-  template: require('./units.html'),
-  directives: [ ...ROUTER_DIRECTIVES, RouterOutlet],
-  providers: [UnitCentralServices]
+  template: require('./units.html'),  
+  providers: [UnitService, MATERIAL_PROVIDERS],
+  directives: [ ...ROUTER_DIRECTIVES, RouterOutlet, MATERIAL_DIRECTIVES]
 })
 @RouteConfig([
-  { path: '/', component: UnitList, name: 'UnitList', useAsDefault: true },
+  { path: '/', component: UnitTableContainer, name: 'UnitTable', useAsDefault: true },
   { path: '/new', component: UnitDetail, name: 'AddNewUnit' },
   { path: '/:id', component: UnitDetail, name: 'EditUnit' },
-  { path: '/**', redirectTo: ['UnitList'] }
+  { path: '/**', redirectTo: ['UnitTable'] }
 ])
 export class Units {
     

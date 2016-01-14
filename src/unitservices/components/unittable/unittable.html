@@ -1,0 +1,44 @@
+
+<table class="md-table table-overflow" >
+    <thead class="md-head" >
+    <tr class="md-row">
+        <td class="md-column">
+            #
+        </td>
+        <td class="md-column">
+            Year
+        </td>
+        <td class="md-column">
+            Make
+        </td>
+        <td class="md-column">
+            Model
+        </td>
+        <td class="md-column">
+            Created
+        </td>
+    </tr>
+    </thead>
+    <tbody class="md-body">
+    <tr *ngFor="#unit of units"
+        (onclick)="onSelect(unit)" class="md-row" >
+        <td class="md-cell" >
+            {{unit.unitNumber}}
+        </td>        
+        <td class="md-cell">
+            {{unit.year}}
+        </td>
+        <td class="md-cell">
+            {{unit.make}}
+        </td>
+        <td class="md-cell">
+            {{unit.model}}
+        </td>
+        <td class="md-cell">
+            {{unit.createdOn}}
+        </td>
+    </tr>
+    </tbody>                  
+</table>
+    
+    

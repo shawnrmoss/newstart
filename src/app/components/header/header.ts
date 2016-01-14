@@ -9,7 +9,5 @@ import './header.scss';
   directives: [MATERIAL_DIRECTIVES]
 })
 export class Header {
-
   constructor() {}
-
 }

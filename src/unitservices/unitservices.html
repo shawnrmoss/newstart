@@ -1,14 +1,15 @@
-<div id="unitservices-stage" class="container"  >    
-    <div class="row">        
-        <div class="sidebar col-md-4">   
-            <h2>Unit Services</h2>          
-            <blockquote>
-                Monitor Unit Inventory and related actions here.
-            </blockquote>
-            <unitservicelist></unitservicelist>
-        </div>
-        <div class="mainstage col-md-8">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div>
+<header >    
+</header>
+<md-content class="md-padding" 
+            layout="row" 
+            layout-wrap 
+            layout-align="center start"
+            >
+            
+  <div flex="30" layout="column" flex-xs="100">       
+    <unitservicelist></unitservicelist>          
+  </div>
+  <div flex="70" layout="column" flex-xs="100">
+    <router-outlet></router-outlet>
+  </div>
+</md-content>

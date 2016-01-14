@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import { Http, Headers, HTTP_PROVIDERS } from 'angular2/http';
 import { Router } from 'angular2/router';
-import {MdPatternValidator, MdMinValueValidator, MdNumberRequiredValidator, MdMaxValueValidator, MATERIAL_DIRECTIVES} from 'ng2-material/all';
+import { MdPatternValidator, MdMinValueValidator, MdNumberRequiredValidator, MdMaxValueValidator, MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import { FORM_DIRECTIVES, Validators, FormBuilder, ControlGroup} from 'angular2/common';
 
 import {RequestOptions, RequestMethod} from 'angular2/http';
@@ -61,7 +61,7 @@ export class LoginForm {
             .subscribe(
                 data => {
                     //Store the jwt
-                    this.saveJwt(data.json());
+                    this.saveJwt(data.json());                    
 
                     //Add router and redirect to authenticated app                    
                     this.router.navigate(['HomePage']);
@@ -80,7 +80,8 @@ export class LoginForm {
     saveJwt(jwt) {
         console.log(jwt);
         if (jwt) {
-            localStorage.setItem('jwt-summit', jwt);
+            localStorage.setItem('jwt-summit', jwt);            
+            console.log('Summit JWT: ', jwt);
         }
     }
 }

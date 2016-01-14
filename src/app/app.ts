@@ -5,8 +5,9 @@ import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteConfig, ROUTER_PROVIDERS, RouterOutlet} from 'angular2/router';
 import {ProtectedDirective} from './directives/protected.directive';
 
-import {HomePage} from './components/home-page/home-page';
-import {LoginPage} from '../accountservices/components/login-page/login-page';
+import {Home} from './components/home/home';
+import {Login} from '../accountservices/components/login/login';
+import {UnitServices} from '../unitservices/unitservices';
 
 /*
  * App Component
@@ -15,12 +16,13 @@ import {LoginPage} from '../accountservices/components/login-page/login-page';
 @Component({
   selector: 'app',
   directives: [ROUTER_DIRECTIVES, ProtectedDirective],
-  template: require('./app.html')
+  template: `<router-outlet></router-outlet>`
 })
 @RouteConfig([
-  { path: '/', component: HomePage, name: 'HomePage' },
-  { path: '/login', component: LoginPage, name: 'LoginPage', useAsDefault: true },
-  { path: '/**', redirectTo: ['LoginPage'] }
+  { path: '/', component: Home, name: 'Home' },
+  { path: '/login', component: Login, name: 'Login', useAsDefault: true },
+  { path: '/unitservices/...', component: UnitServices, name: 'UnitServices' },
+  { path: '/**', redirectTo: ['Login'] }
 ])
 export class App {
   constructor() {

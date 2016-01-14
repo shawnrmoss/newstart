@@ -10,16 +10,16 @@ import {WindowService} from '../../../app/services/window.service';
 import {AuthService} from '../../services/auth.service';
 import {LoginCard} from '../../components/login-card/login-card';
 
-import './login-page.scss';
+import './login.scss';
 
 @Component({
-    selector: 'login-page',
+    selector: 'login',
     directives: [LoginCard],
     pipes: [],
     providers: [],
-    template: require('./login-page.html')
+    template: require('./login.html')
 })
-export class LoginPage {
+export class Login {
     constructor() {        
     } 
 }

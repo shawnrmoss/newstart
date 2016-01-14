@@ -3,12 +3,12 @@ import {Component} from "angular2/core";
 import {Header} from './../header/header';
 
 @Component({
-    selector: 'home-page',
+    selector: 'home',
     directives: [Header],
     pipes: [],
-    template: require('./home-page.html')
+    template: require('./home.html')
 })
-export class HomePage {
+export class Home {
     constructor() {
         
     }

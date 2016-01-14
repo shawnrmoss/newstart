@@ -3,11 +3,13 @@ import {Router} from 'angular2/router';
 import {UnitService} from '../../services/unitservice';
 import {Unit} from '../../datatypes/unit';
 
+import './unittable.scss';
+
 @Component({
-  selector: 'unitlist',
-  template: require('./unitlist.html')
+  selector: 'unit-table',
+  template: require('./unittable.html')
 })
-export class UnitList implements OnInit {
+export class UnitTable implements OnInit {
   units: Array<Unit>;
   
   constructor(
@@ -18,7 +20,8 @@ export class UnitList implements OnInit {
     this._service.getUnits().subscribe(res => this.units = res);;
   }
   
-  onSelect(unit: Unit){    
+  onSelect(unit: Unit){
+    console.log(unit);
     this._router.navigate( ['UnitDetail', { id: unit.unitID }] );
   }
 }

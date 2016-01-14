@@ -29,5 +29,3 @@ import 'rxjs';
 
 // Other vendors for example jQuery, Lodash, angular2-jwt
 import 'jquery';
-import 'font-awesome-webpack';
-import 'bootstrap-webpack';
