@@ -6,12 +6,11 @@ import './login-card.scss';
 @Component({
   selector: 'login-card',
   template: require('./login-card.html'),
-  directives: [],
+  directives: [LoginForm],
   providers: []
 })
-export class LoginCard {
-    
-    constructor(
-        ) {                   
+export class LoginCard {    
+    constructor() 
+    {                   
     }
 }

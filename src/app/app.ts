@@ -8,7 +8,6 @@ import {ProtectedDirective} from './directives/protected.directive';
 import {HomePage} from './components/home-page/home-page';
 import {LoginPage} from '../accountservices/components/login-page/login-page';
 
-import '../assets/scss/main.scss';
 /*
  * App Component
  * Top Level Component

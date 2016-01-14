@@ -10,23 +10,16 @@ import {WindowService} from '../../../app/services/window.service';
 import {AuthService} from '../../services/auth.service';
 import {LoginCard} from '../../components/login-card/login-card';
 
+import './login-page.scss';
+
 @Component({
-    selector: 'public-page',
+    selector: 'login-page',
     directives: [LoginCard],
     pipes: [],
     providers: [],
     template: require('./login-page.html')
 })
 export class LoginPage {
-    constructor(private  cookies:CookieService, private authService:AuthService) {
-        //console.log("Public instantiated");
-    }
-
-    get idCookie() {
-        return this.cookies.getCookie('id');
-    }
-
-    get authenticated() {
-        return this.authService.isAuthenticated();
-    }
+    constructor() {        
+    } 
 }

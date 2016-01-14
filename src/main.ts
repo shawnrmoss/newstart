@@ -7,12 +7,11 @@ import {CallbackComponent} from './accountservices/components/callback';
 import {provide} from 'angular2/core';
 import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, PathLocationStrategy, LocationStrategy, HashLocationStrategy} from 'angular2/router';
-import {COMMON_DIRECTIVES} from 'angular2/common';
+import {COMMON_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
 
-import './assets/scss/main.scss';
 /*
  * App Component
  * our top level component that holds all of our components
@@ -33,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function main() {
                 MATERIAL_DIRECTIVES,
                 MATERIAL_PROVIDERS,
                 COMMON_DIRECTIVES,
+                ...FORM_DIRECTIVES,
                 ROUTER_DIRECTIVES,
                 ROUTER_PROVIDERS,
                 HTTP_PROVIDERS,

@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import { Http, Headers, HTTP_PROVIDERS } from 'angular2/http';
 import { Router } from 'angular2/router';
-import { MdPatternValidator, MdMinValueValidator, MdNumberRequiredValidator, MdMaxValueValidator } from 'ng2-material/all';
+import {MdPatternValidator, MdMinValueValidator, MdNumberRequiredValidator, MdMaxValueValidator, MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import { FORM_DIRECTIVES, Validators, FormBuilder, ControlGroup} from 'angular2/common';
 
 import {RequestOptions, RequestMethod} from 'angular2/http';
@@ -11,11 +11,12 @@ import './login-form.scss';
 @Component({
   selector: 'login-form',
   template: require('./login-form.html'),
-  directives: [FORM_DIRECTIVES],
+  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES],
   providers: [HTTP_PROVIDERS]
 })
 export class LoginForm {
     loginForm: ControlGroup;
+    message: string;
     credentials = {
         customerName: '',
         email: '',
@@ -63,16 +64,16 @@ export class LoginForm {
                     this.saveJwt(data.json());
 
                     //Add router and redirect to authenticated app                    
-                    this.router.navigate(['Authenticated']);
-
-                     this.router.navigate( ['Authenticated'] );
+                    this.router.navigate(['HomePage']);
                 },
-                err => this.logError(err.json().message),
-                () => console.log('Authentication Complete')
+                err => {                    
+                    this.logError(err.json().message),() => console.log('Authentication Complete')                
+                }
             );
     }
 
     logError(err) {
+        this.message = "The password or username you entered does not exist for that customer.";
         console.error('There was an error: ' + err);
     }
 
