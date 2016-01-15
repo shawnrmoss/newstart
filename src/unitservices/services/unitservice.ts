@@ -2,7 +2,7 @@ import { Http, Headers } from 'angular2/http';
 import { Injectable } from 'angular2/core';
 import { Unit } from '../datatypes/unit';
 
-var jwt_Decode = require('jwt-decode');
+
  
 @Injectable()
 export class UnitService {
@@ -80,36 +80,10 @@ export class UnitService {
             return responseData.json();
         })
         .map((unit: Unit) => {
-            let result: Unit = {};
-            if (units) {
-                console.log(units);
-                units.forEach((unit) => {
-                result.push(
-                    //This maps it to our client side data type
-                    new Unit(unit.UnitID, 
-                            unit.ActivePlateID,
-                            unit.UnitStatusID,
-                            unit.UnitNumber,
-                            unit.Year,
-                            unit.Make,
-                            unit.Model,
-                            unit.Trim,
-                            unit.VIN,
-                            unit.IsPoolUnit,
-                            unit.InServiceDate,
-                            unit.Term,
-                            unit.CostCenter,
-                            unit.FactoryStock,
-                            unit.CreatedByUserID,
-                            unit.CreatedByUserName,
-                            unit.CreatedOn,
-                            unit.DeletedByUserID, 
-                            unit.DeletedByUserName, 
-                            unit.DeletedOn
-                            ));
-                });
-            }
-            return result;
+            
+            console.log(unit);
+            
+            return unit;
         });
     }
         

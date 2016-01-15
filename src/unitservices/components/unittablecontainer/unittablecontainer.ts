@@ -6,7 +6,7 @@ import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
 import {UnitService} from '../../services/unitservice';
 import {UnitTable} from '../unittable/unittable';
 
-import './unittablecontainer.scss';
+
 
 @Component({
   selector: 'unit-table-container',

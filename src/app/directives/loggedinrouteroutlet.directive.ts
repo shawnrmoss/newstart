@@ -2,7 +2,7 @@ import {Directive, Attribute, ElementRef, DynamicComponentLoader} from 'angular2
 import {Router, RouterOutlet, ComponentInstruction} from 'angular2/router';
 
 @Directive({
-  selector: 'router-outlet'
+  selector: 'loggedin-router-outlet'
 })
 export class LoggedInRouterOutlet extends RouterOutlet {
   publicRoutes: any;
@@ -21,8 +21,8 @@ export class LoggedInRouterOutlet extends RouterOutlet {
   activate(instruction: ComponentInstruction) {
     var url = this.parentRouter.lastNavigationAttempt;
     if (!this.publicRoutes[url] && !localStorage.getItem('summit-jwt')) {
-      // todo: redirect to Login, may be there a better way?
-      this.parentRouter.
+      // todo: redirect to Login, may be there a better way?      
+      console.log(localStorage.getItem('summit-jwt'));
       this.parentRouter.navigateByUrl('/login');
     }
     return super.activate(instruction);

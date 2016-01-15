@@ -10,4 +10,9 @@ import './header.scss';
 })
 export class Header {
   constructor() {}
+  
+  onAdd(){   
+    //delete the jwt
+    
+  }
 }

@@ -23,9 +23,7 @@ export class Unit {
     deletedByUserName: string;
     deletedOn: Date;
         
-    //full constructor
-    constructor() {}
-    
+    //full constructor       
     constructor(unitID: number, 
                 activePlateID: number, 
                 unitStatusID: number, 
