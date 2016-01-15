@@ -1,5 +1,5 @@
 import {WindowService} from './app/services/window.service';
-import {AuthService} from './accountservices/services/authservice';
+import {AuthService} from './accountservices/services/auth.service';
 import {CookieService} from './app/services/cookie.service';
 import {DialogService} from './app/services/dialog.service';
 import {CallbackComponent} from './accountservices/components/callback';
