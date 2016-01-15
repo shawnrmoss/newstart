@@ -3,14 +3,10 @@
  */
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteConfig, ROUTER_PROVIDERS, RouterOutlet} from 'angular2/router';
-import {ProtectedDirective} from './directives/protected.directive';
-import {LoggedInRouterOutlet} from './directives/loggedinrouteroutlet.directive';
 
 import {Home} from './components/home/home';
 import {Login} from '../accountservices/components/login/login';
 import {UnitServices} from '../unitservices/unitservices';
-
-import '../assets/scss/main.scss';
 
 /*
  * App Component
@@ -18,8 +14,8 @@ import '../assets/scss/main.scss';
  */
 @Component({
   selector: 'app',
-  directives: [ROUTER_DIRECTIVES, ProtectedDirective, LoggedInRouterOutlet],  
-  template: `<loggedin-router-outlet></loggedin-router-outlet>`
+  directives: [ROUTER_DIRECTIVES, RouterOutlet],
+  template: `<router-outlet></router-outlet>`
 })
 @RouteConfig([
   { path: '/', component: Home, name: 'Home' },

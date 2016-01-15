@@ -1,10 +1,10 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, RouterOutlet, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig, RouterOutlet, ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {AuthService} from './../accountservices/services/authservice';
 
-import {UnitService } from './services/unitservice';
+import {UnitService} from './services/unitservice';
 
 import {Header} from '../app/components/header/header';
-
 import {UnitDashboard} from './components/unitdashboard/unitdashboard';
 import {Units} from './components/units/units';
 import {UnitServiceList} from './components/unitservicelist/unitservicelist';
@@ -27,7 +27,14 @@ import './unitservices.scss';
   { path: '/**', redirectTo: ['UnitDashboard'] }
 ])
 export class UnitServices {
-  constructor() {
+  constructor(
+      private _authService: AuthService,
+      private _router: Router) {
+          
+      if(_authService.check())
+      {
+          _router.navigate(['Login']);
+      }   
   }
 }
 

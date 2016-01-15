@@ -26,6 +26,7 @@ import 'angular2/core';
 
 // RxJS
 import 'rxjs';
+import 'rxjs/Observable';
 
 // Other vendors for example jQuery, Lodash, angular2-jwt
 import 'jquery';
