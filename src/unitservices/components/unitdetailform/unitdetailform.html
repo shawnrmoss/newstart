@@ -1,39 +1,141 @@
+
+
+activePlateID: number, 
+unitStatusID: number, 
+
+
+
+
+inServiceDate: Date, 
+term: number, 
+costCenter
+
+
+ 
+createdByUserID: number, 
+createdByUserName: string, 
+createdOn: Date, 
+deletedByUserID: number, 
+deletedByUserName: string, 
+deletedOn: Date
+
 <form [ngFormModel]="loginForm"
       (ngSubmit)="onSubmit(loginForm.value)" >
-    <md-input-container class="md-block">
-        <label for="customerName">Customer Name</label>
-        <input md-input 
-            ngControl="customerName" 
-            id="customerName" 
-            [(value)]="credentials.customerName">
-        <div md-messages="customerName">
-            <div md-message="required">This is required.</div>
-            <div md-message="maxlength">The customer name has to be less than 50 characters long.</div>
+    <div layout="row">
+          <md-input-container class="md-block" layout="column" flex="60" flex-xs="100">
+            <label for="unitNumber">Unit Number</label>
+            <input md-input             
+                ngControl="unitNumber" 
+                id="unitNumber" 
+                [(value)]="unitDetail.unitNumber">
+            <div md-messages="unitNumber">
+                <div md-message="required">This is required.</div>
+                <div md-message="maxlength">The unit number has to be less than 50 characters long.</div>
+            </div>
+        </md-input-container>   
+        <md-input-container class="md-block" layout="column" flex="60" flex-xs="100">
+            <label for="unitNumber">Status</label>
+            Need to find a drop down control
+        </md-input-container>   
+    </div>
+    
+    <div layout="row">
+        <md-input-container class="md-block" layout="column" flex="33" flex-xs="100" >
+            <label for="year">Year</label>
+            <input md-input    
+                type="number"             
+                ngControl="year" 
+                id="year" 
+                [(value)]="unitDetail.year" />
+            <div md-messages="year" role="alert">
+                <div md-message>Must be a valid year.</div>
+            </div>
+        </md-input-container>
+    
+        <md-input-container class="md-block" layout="column" flex="34" flex-xs="100" >
+            <label for="make">Make</label>
+            <input md-input                 
+                ngControl="make" 
+                id="make" 
+                [(value)]="unitDetail.make" />
+            <div md-messages="make" role="alert">            
+                <div md-message="maxlength">The make has to be less than 30 or equal to characters long.</div>
+            </div>
+        </md-input-container>   
+    
+        <md-input-container class="md-block" layout="column" flex="33"flex-xs="100" >
+            <label for="model">Model</label>
+            <input md-input                 
+                ngControl="model" 
+                id="model" 
+                [(value)]="unitDetail.model" />
+            <div md-messages="model" role="alert">            
+                <div md-message="maxlength">The model has to be less than 30 or equal to characters long.</div>
+            </div>
+        </md-input-container>      
+    </div>   
+    
+    <div layout="row">
+        <md-input-container class="md-block" layout="column" flex="50" flex-xs="100" >
+            <label for="trim">Trim</label>
+            <input md-input                 
+                ngControl="trim" 
+                id="trim" 
+                [(value)]="unitDetail.trim" />
+            <div md-messages="trim" role="alert">            
+                <div md-message="maxlength">The trim has to be less than or equal to 30 characters long.</div>
+            </div>
+        </md-input-container>      
+        
+        <md-input-container class="md-block"  layout="column" flex="50" flex-xs="100" >
+            <label for="vin">VIN</label>
+            <input md-input                 
+                ngControl="vin" 
+                id="vin" 
+                [(value)]="unitDetail.vin" />
+            <div md-messages="vin" role="alert">            
+                <div md-message="maxlength">The vin has to be less than 18 characters long.</div>
+            </div>
+        </md-input-container>        
+    </div>  
+    
+    <div layout="row">
+        <div flex="34" flex-xs="100" >            
+        </div>     
+        <md-input-container class="md-block" layout="column" flex="33" flex-xs="100" >
+            <label for="isPoolUnit">Pool Unit</label>
+            <input md-input 
+                type="checkbox" 
+                ngControl="isPoolUnit" 
+                id="isPoolUnit" 
+                [(value)]="unitDetail.trim" />
+            <div md-messages="isPoolUnit" role="alert">                            
+            </div>
+        </md-input-container>      
+        
+        <md-input-container class="md-block" layout="column" flex="33" flex-xs="100" >
+            <label for="trim">Factory Stock</label>
+            <input md-input      
+                type="checkbox"            
+                ngControl="factoryStock" 
+                id="factoryStock" 
+                [(value)]="unitDetail.factoryStock" />
+            <div md-messages="factoryStock" role="alert">                            
+            </div>
+        </md-input-container>   
+    </div>  
+    
+    <md-input-container class="md-block" layout="column" flex="33" flex-xs="100" >
+        <label for="trim">Factory Stock</label>
+        <input md-input      
+            type="checkbox"            
+            ngControl="factoryStock" 
+            id="factoryStock" 
+            [(value)]="unitDetail.factoryStock" />
+        <div md-messages="factoryStock" role="alert">                            
         </div>
-    </md-input-container>      
-    <md-input-container class="md-block">
-        <label for="email">Email</label>
-        <input md-input 
-            type="email" 
-            ngControl="email" 
-            id="email" 
-            [(value)]="credentials.email" />
-        <div md-messages="email" role="alert">
-        <div md-message>Your email must be between 10 and 100 characters long and look like an e-mail address.</div>
-        </div>
-    </md-input-container>
-    <md-input-container class="md-block">
-        <label for="password">Password</label>
-        <input md-input 
-            type="password" 
-            ngControl="password" 
-            id="password" 
-            [(value)]="credentials.password" />
-        <div md-messages="password" role="alert">
-        <div md-message>Password expresion that requires one lower case letter, one upper case letter, one digit, 6-13 length, and no spaces.</div>
-        </div>        
-    </md-input-container>     
-    <md-input-container class="md-block">
-        <button type="submit" md-raised-button class="md-raised md-primary" >Sign In</button>         
-    </md-input-container>           
+    </md-input-container>   
+   
+    
+        
 </form>

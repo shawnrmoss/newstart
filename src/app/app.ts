@@ -9,6 +9,7 @@ import {LoggedInRouterOutlet} from './directives/loggedinrouteroutlet.directive'
 import {Home} from './components/home/home';
 import {Login} from '../accountservices/components/login/login';
 import {UnitServices} from '../unitservices/unitservices';
+import {UnitDetailContainer} from '../unitservices/components/unitdetailcontainer/unitdetailcontainer';
 
 import '../assets/scss/main.scss';
 
@@ -23,9 +24,10 @@ import '../assets/scss/main.scss';
 })
 @RouteConfig([
   { path: '/', component: Home, name: 'Home' },
-  { path: '/login', component: Login, name: 'Login', useAsDefault: true },
+  { path: '/login', component: Login, name: 'Login' },
   { path: '/unitservices/...', component: UnitServices, name: 'UnitServices' },
-  { path: '/**', redirectTo: ['Login'] }
+  { path: '/unitdetail', component: UnitDetailContainer, name: 'UnitDetail', useAsDefault: true },
+  { path: '/**', redirectTo: ['UnitDetail'] }
 ])
 export class App {
   constructor() {

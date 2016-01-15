@@ -22,6 +22,8 @@ export class UnitDetailForm {
     message: string;
     unit = Unit;
     
+    //^\d{4}$ Valid year regex
+    
     constructor(
         fb: FormBuilder,
         private http: Http,
