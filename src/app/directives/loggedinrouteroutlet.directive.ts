@@ -20,9 +20,14 @@ export class LoggedInRouterOutlet extends RouterOutlet {
 
   activate(instruction: ComponentInstruction) {
     var url = this.parentRouter.lastNavigationAttempt;
-    if (!this.publicRoutes[url] && !localStorage.getItem('summit-jwt')) {
+    
+    console.log("url: " + url);
+    console.log("isPublicRoute: " + this.publicRoutes[url]);
+    console.log("jwt: " + localStorage.getItem('jwt'));
+    
+    if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
       // todo: redirect to Login, may be there a better way?      
-      console.log(localStorage.getItem('summit-jwt'));
+      console.log("We should be redirecting to the login page.");
       this.parentRouter.navigateByUrl('/login');
     }
     return super.activate(instruction);

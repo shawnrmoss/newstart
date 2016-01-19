@@ -6,10 +6,11 @@ import {ROUTER_DIRECTIVES, RouteConfig, ROUTER_PROVIDERS, RouterOutlet} from 'an
 import {ProtectedDirective} from './directives/protected.directive';
 import {LoggedInRouterOutlet} from './directives/loggedinrouteroutlet.directive';
 
-import {Home} from './components/home/home';
-import {Login} from '../accountservices/components/login/login';
-import {UnitServices} from '../unitservices/unitservices';
-import {UnitDetailContainer} from '../unitservices/components/unitdetailcontainer/unitdetailcontainer';
+import {HomePage} from './pages/home-page/home-page';
+import {LoginPage} from './pages/login-page/login-page';
+import {UnitsPage} from './pages/units-page/units-page';
+
+
 
 import '../assets/scss/main.scss';
 
@@ -23,11 +24,10 @@ import '../assets/scss/main.scss';
   template: `<loggedin-router-outlet></loggedin-router-outlet>`
 })
 @RouteConfig([
-  { path: '/', component: Home, name: 'Home' },
-  { path: '/login', component: Login, name: 'Login' },
-  { path: '/unitservices/...', component: UnitServices, name: 'UnitServices' },
-  { path: '/unitdetail', component: UnitDetailContainer, name: 'UnitDetail', useAsDefault: true },
-  { path: '/**', redirectTo: ['UnitDetail'] }
+  { path: '/', component: HomePage, name: 'HomePage' },
+  { path: '/login', component: LoginPage, name: 'LoginPage' },
+  { path: '/units', component: UnitsPage, name: 'UnitsPage' },  
+  { path: '/**', redirectTo: ['HomePage'] }
 ])
 export class App {
   constructor() {

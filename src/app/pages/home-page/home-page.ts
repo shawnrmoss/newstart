@@ -1,14 +1,14 @@
 
 import {Component} from "angular2/core";
-import {Header} from './../header/header';
+import {Header} from '../../components/header/header';
 
 @Component({
     selector: 'home',
     directives: [Header],
     pipes: [],
-    template: require('./home.html')
+    template: require('./home-page.html')
 })
-export class Home {
+export class HomePage {
     constructor() {
         
     }
