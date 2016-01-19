@@ -1,7 +1,6 @@
-import {WindowService} from './app/services/window.service';
-import {CookieService} from './app/services/cookie.service';
-import {DialogService} from './app/services/dialog.service';
 
+import {AuthService} from './app/services/auth.service';
+import {UnitService} from './app/services/units.service';
 
 import {provide} from 'angular2/core';
 import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
@@ -24,9 +23,8 @@ document.addEventListener('DOMContentLoaded', function main() {
   bootstrap(App,
             [
                 ...('production' === process.env.ENV ? [] : ELEMENT_PROBE_PROVIDERS),
-                CookieService,                
-                WindowService,
-                DialogService,
+                AuthService,                
+                UnitService,               
                 MATERIAL_DIRECTIVES,
                 MATERIAL_PROVIDERS,
                 COMMON_DIRECTIVES,

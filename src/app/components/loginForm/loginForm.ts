@@ -1,66 +1,47 @@
-import {Component} from 'angular2/core';
-import { Http, Headers, HTTP_PROVIDERS } from 'angular2/http';
+import { Component } from 'angular2/core';
+import { Http } from 'angular2/http';
 import { Router } from 'angular2/router';
-import { FORM_DIRECTIVES, Validators, FormBuilder, ControlGroup} from 'angular2/common';
+import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 
-import {RequestOptions, RequestMethod} from 'angular2/http';
+import { Credential } from '../../datatypes/credential';
+import { AuthService } from '../../services/auth.service';
 
 import './loginForm.scss';
 
 @Component({
   selector: 'login-form',
   template: require('./loginForm.html'),
-  directives: [],
-  providers: [HTTP_PROVIDERS]
+  directives: [MATERIAL_DIRECTIVES],
+  providers: [AuthService]
 })
-export class LoginForm {
-    loginForm: ControlGroup;
-    message: string;
-    credentials = {        
-        email: '',
-        password: ''
-    };
+export class LoginForm {    
+    public message: string;
+    public loading: boolean;
+    public credential:  Credential;
     
-    constructor(
-        fb: FormBuilder,
+    constructor(        
         public http: Http,
-        public router: Router) {                   
+        public router: Router,
+        public auth: AuthService) {   
+       
+        this.loading = false;
+        this.credential = new Credential(null, null);                
     }
 
-    onSubmit(data: string) {
-        var creds = 'userName=' + data['email'] + '&password=' + data['password'];
-        creds = creds + '&grant_type=password';
-
-        var headers = new Headers();
-        headers.append('Accept', 'application/json');
-        headers.append('Content-Type', 'text/plain');
-
-        //Move this to the auth service
-        //Call web api for a jwt token
-        this.http.post('http://summitapi.azurewebsites.net/Token', creds, {
-                headers: headers
-            })
-            .subscribe(
-                data => {
-                    //Store the jwt
-                    localStorage.setItem('jwt', data.json().id_token);                                                     
-                    //Add router and redirect to authenticated app                    
-                    this.router.navigate(['HomePage']);
-                },
-                err => {                    
-                    this.logError(err.json().message),() => console.log('Authentication Complete')                
-                }
-            );
-    }
-
-    logError(err) {
-        this.message = "The password or username you entered does not exist for that customer.";
-        console.error('There was an error: ' + err);
-    }
-
-    saveJwt(jwt) {        
-        if (jwt) {
-            localStorage.setItem('jwt', jwt);                        
-        }
-    }
+    onSubmit() {      
+        this.loading = true;
+        this.auth.signIn(this.credential)
+                 .subscribe(
+                     data => {
+                        console.log(this.auth.isAuthenticated());
+                        this.loading = false;                              
+                        this.router.navigate(['HomePage']);                            
+                     },
+                     err => {        
+                        this.loading = false;                                           
+                        this.message = 'Your username or password were incorrect.' //Log the error to console       
+                        console.log(this.message);             
+                     }
+                 );                                   
+    }    
 }

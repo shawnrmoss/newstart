@@ -1,5 +1,7 @@
 import {Component} from 'angular2/core';
 import {RouterLink} from 'angular2/router';
+import { AuthService } from '../../services/auth.service';
+
 import './header.scss';
 
 @Component({
@@ -9,10 +11,11 @@ import './header.scss';
   directives: [RouterLink]
 })
 export class Header {
-  constructor() {}
+  constructor(private auth: AuthService) {
+      
+  }
   
-  onAdd(){   
-    //delete the jwt
-    
+  onLogoff(){   
+    this.auth.logout();    
   }
 }

@@ -1,5 +1,6 @@
 
-<form (ngSubmit)="onSubmit(loginForm.value)" #loginForm="ngForm">  
+<md-progress-linear mode="indeterminate" [hidden]="!loading" ></md-progress-linear>
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">      
     <div layout="row" 
              layout-wrap 
              layout-align="center start"
@@ -7,7 +8,7 @@
         <div flex="100" layout="column" flex-xs="100">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input class="form-control" id="email" type="email" required [(ngModel)]="credentials.email" ngControl="email" #email="ngForm">                
+                <input class="form-control" id="email" type="email" required [(ngModel)]="credential.email" ngControl="email" #email="ngForm">                
             </div>       
         </div>  
     </div>   
@@ -18,9 +19,13 @@
         <div flex="100" layout="column" flex-xs="100">
             <div class="form-group">
                 <label for="password">Password</label>
-                <input class="form-control" id="password" type="password" required [(ngModel)]="credentials.password" ngControl="password" #password="ngForm">               
+                <input class="form-control" id="password" type="password" required [(ngModel)]="credential.password" ngControl="password" #password="ngForm">               
             </div>       
         </div>  
     </div>     
+    <div *ngIf="message != null" class="bg-danger">
+        {{message}}
+    </div>
+    
     <button type="submit"class="btn btn-success" [disabled]="!loginForm.form.valid" >Sign In</button>             
 </form>
