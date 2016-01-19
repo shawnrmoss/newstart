@@ -1,51 +1,111 @@
 
 <h2>Unit Form</h2>
-<form>
-    <div class="form-group">
-        <label for="unitNumber">Unit Number</label>
-        <input class="form-control" id="unitNumber" required [(ngModel)]="unit.unitNumber" ngControl="unitNumber"  #spy>
-        <br >
-        TODO: remove this: {{spy.className}}
-    </div>       
-    <div class="form-group">
-        <label for="year">Year</label>
-        <input class="form-control" id="year" [(ngModel)]="unit.year" ngControl="year"  required >
+<form> 
+    <div layout="row" 
+             layout-wrap 
+             layout-align="center start"
+            >            
+        <div flex="50" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="unitNumber">Unit Number</label>
+                <input class="form-control" id="unitNumber" required [(ngModel)]="unit.unitNumber" ngControl="unitNumber" #unitNumber="ngForm">
+                <div [hidden]="unitNumber.valid" class="alert alert-danger">
+                    Unit Number is required
+                </div>
+            </div>       
+        </div>  
+        <div flex="50" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="power">Status</label>
+                <select class="form-control"  required ngControl="power" >
+                    <option *ngFor="#p of powers" [value]="p">{{p}}</option>
+                </select>
+            </div>               
+        </div>  
     </div>
-    <div class="form-group">
-        <label for="make">Make</label>
-        <input class="form-control" id="make" placeholder="Make of Unit" [(ngModel)]="unit.make" ngControl="make"  required >
+    
+    <div layout="row" 
+             layout-wrap 
+             layout-align="center start"
+            >            
+        <div flex="33" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="year">Year</label>
+                <input class="form-control" id="year" required [(ngModel)]="unit.year" ngControl="year" #year="ngForm">
+                <div [hidden]="year.valid" class="alert alert-danger">
+                    Year is required
+                </div>
+            </div>     
+        </div>  
+        <div flex="34" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="make">Make</label>
+                <input class="form-control" id="make" placeholder="Make of Unit" [(ngModel)]="unit.make" ngControl="make"  required #make="ngForm">
+                <div [hidden]="make.valid" class="alert alert-danger">
+                    Make is required
+                </div>
+            </div>      
+        </div>  
+        <div flex="33" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="model">Model</label>
+                <input class="form-control" id="model" placeholder="Model of Unit" [(ngModel)]="unit.model" ngControl="model"  required #model="ngForm">
+                <div [hidden]="make.valid" class="alert alert-danger">
+                    Model is required
+                </div>
+            </div>   
+        </div>  
     </div>
-    <div class="form-group">
-        <label for="model">Model</label>
-        <input class="form-control" id="model" placeholder="Model of Unit" [(ngModel)]="unit.model" ngControl="model"  required >
+    
+    <div layout="row" 
+             layout-wrap 
+             layout-align="center start"
+            >            
+        <div flex="33" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="trim">Trim</label>
+                <input class="form-control" id="trim" placeholder="Trim" [(ngModel)]="unit.trim" ngControl="trim"  >
+            </div> 
+        </div>  
+        <div flex="34" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="vin">VIN</label>
+                <input class="form-control" id="vin" placeholder="VIN" [(ngModel)]="unit.vin" ngControl="vin" >
+            </div>   
+        </div>  
+        <div flex="33" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="isPoolUnit">Is Pool Unit</label>
+                <input type="checkbox" class="form-control" id="isPoolUnit" [(ngModel)]="unit.isPoolUnit" ngControl="isPoolUnit" >
+            </div>
+        </div>  
     </div>
-    <div class="form-group">
-        <label for="trim">Trim</label>
-        <input class="form-control" id="trim" placeholder="Trim" [(ngModel)]="unit.trim" ngControl="trim"  >
+    
+    <div layout="row" 
+             layout-wrap 
+             layout-align="center start"
+            >            
+        <div flex="33" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="inServiceDate">In Service Date</label>
+                <input  class="form-control" id="inServiceDate"  [(ngModel)]="unit.inServiceDate" ngControl="inServiceDate" >
+            </div>
+        </div>  
+        <div flex="34" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="costCenter">Cost Center</label>
+                <input class="form-control" id="costCenter"  [(ngModel)]="unit.costCenter" ngControl="costCenter">
+            </div>    
+        </div>  
+        <div flex="33" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="factoryStock">Factory Stock</label>
+                <input type="checkbox" class="form-control" id="factoryStock" ngControl="facetoryStock" >
+            </div>
+        </div>  
     </div>
-    <div class="form-group">
-        <label for="vin">VIN</label>
-        <input class="form-control" id="vin" placeholder="VIN" [(ngModel)]="unit.vin" ngControl="vin" >
-    </div>
-    <div class="form-group">
-        <label for="isPoolUnit">Is Pool Unit</label>
-        <input type="checkbox" class="form-control" id="isPoolUnit" [(ngModel)]="unit.isPoolUnit" ngControl="isPoolUnit" >
-    </div>
-    <div class="form-group">
-        <label for="inServiceDate">In Service Date</label>
-        <input  class="form-control" id="inServiceDate"  [(ngModel)]="unit.inServiceDate" ngControl="inServiceDate" >
-    </div>
-        <div class="form-group">
-        <label for="term" >Term</label>
-        <input  class="form-control" id="term"  [(ngModel)]="unit.term" ngControl="term">
-    </div>
-    <div class="form-group">
-        <label for="costCenter">Cost Center</label>
-        <input class="form-control" id="costCenter"  [(ngModel)]="unit.costCenter" ngControl="costCenter">
-    </div>    
-    <div class="form-group">
-        <label for="factoryStock">Factory Stock</label>
-        <input type="checkbox" class="form-control" id="factoryStock" ngControl="facetoryStock" >
-    </div>
+                            
+    
+                
     <button type="submit" class="btn btn-default">Submit</button>
 </form>

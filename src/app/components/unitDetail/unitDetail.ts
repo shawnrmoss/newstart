@@ -12,7 +12,31 @@ import './unitDetail.scss';
   directives: []
 })
 export class UnitDetail implements OnInit {
-  public unit: Unit;
+  
+  powers = ['Really Smart', 'Super Flexible',
+            'Super Hot', 'Weather Changer'];
+            
+  unit = new Unit(0, 
+                    0,
+                    0,
+                    '3000897',
+                    2015,
+                    'Toyota',
+                    'Tundra',
+                    '',
+                    '',
+                    true,
+                    null,
+                    24,
+                    1,
+                    true,
+                    null, //Created by userID set here or on server
+                    null,
+                    new Date(),
+                    null, 
+                    null, 
+                    null
+                    );
   
   constructor(
     private _service: UnitService,
@@ -22,7 +46,10 @@ export class UnitDetail implements OnInit {
   
   ngOnInit() {
     let unitID = this._params.get('id');    
-    this._service.getUnit(unitID).subscribe(res => this.unit = res);        
+    console.log(unitID);
+    //this._service.getUnit(unitID).subscribe(res => this.unit = res);      
+    
+    console.log(this.unit);  
   }
   
  
