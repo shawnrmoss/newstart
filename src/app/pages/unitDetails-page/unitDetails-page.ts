@@ -1,11 +1,11 @@
 
 import {Component} from "angular2/core";
 import {Header} from '../../components/header/header';
-import {UnitDetails} from '../../components/unitDetail/unitDetail';
+import {UnitDetail} from '../../components/unitDetail/unitDetail';
 
 @Component({
     selector: 'unit-details-page',
-    directives: [Header],
+    directives: [Header, UnitDetail],
     pipes: [],
     template: require('./unitDetails-page.html')
 })

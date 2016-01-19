@@ -29,4 +29,4 @@ import 'rxjs';
 
 // Other vendors for example jQuery, Lodash, angular2-jwt
 import 'jquery';
-require("bootstrap-webpack");
+import 'bootstrap-webpack';

@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {Router, RouterLink } from 'angular2/router';
+import {Router, RouteParams, RouterLink } from 'angular2/router';
 import {UnitService} from '../../services/units.service';
 import {Unit} from '../../datatypes/unit';
 
@@ -11,15 +11,18 @@ import './unitDetail.scss';
   providers: [UnitService],
   directives: []
 })
-export class UnitTable implements OnInit {
-  units: Array<Unit>;
+export class UnitDetail implements OnInit {
+  public unit: Unit;
   
   constructor(
     private _service: UnitService,
-    private _router: Router) {}
+    private _router: Router,
+    private _params: RouteParams
+    ) {}
   
   ngOnInit() {
-    this._service.getUnit(1).subscribe(res => this.units = res);;
+    let unitID = this._params.get('id');    
+    this._service.getUnit(unitID).subscribe(res => this.unit = res);        
   }
   
  

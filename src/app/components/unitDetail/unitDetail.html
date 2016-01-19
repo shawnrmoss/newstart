@@ -1,44 +1,22 @@
 
-<table class="table table-hover table-overflow" >
-    <thead class="md-head" >
-    <tr class="md-row">
-        <td class="md-column">
-            #
-        </td>
-        <td class="md-column">
-            Year
-        </td>
-        <td class="md-column">
-            Make
-        </td>
-        <td class="md-column">
-            Model
-        </td>
-        <td class="md-column">
-            Created
-        </td>
-    </tr>
-    </thead>
-    <tbody class="md-body">
-    <tr *ngFor="#unit of units"
-         class="md-row" >
-        <td class="md-cell" >
-            <a [routerLink]=" ['UnitDetailsPage', { id: unit.unitID }]" > {{unit.unitNumber}}</a>
-        </td>                             
-        <td class="md-cell">
-            {{unit.year}}
-        </td>
-        <td class="md-cell">
-            {{unit.make}}
-        </td>
-        <td class="md-cell">
-            {{unit.model}}
-        </td>
-        <td class="md-cell">
-            {{unit.createdOn}}
-        </td>
-    </tr>
-    </tbody>                  
-</table>
-    
-    
+<form>
+  <div class="form-group">
+    <label for="year">Year</label>
+    <input class="form-control" id="year" placeholder="Year" [(ngModel)]="unit.Year" value="{{unit.Year}}" >
+  </div>
+  <div class="form-group">
+    <label for="make">Make</label>
+    <input class="form-control" id="make" placeholder="Make" [(ngModel)]="unit.Make">
+  </div>
+  <div class="form-group">
+    <label for="model">Model</label>
+    <input class="form-control" id="model" placeholder="Model" [(ngModel)]="unit.Model">
+  </div>
+  <div class="form-group">
+    <label for="createdOn">Created On</label>
+    <input class="form-control" id="createdOn" disabled="disabled" placeholder="Create On" [(ngModel)]="unit.CreatedOn">
+  </div>
+ 
+  <button type="submit" class="btn btn-default">Save</button>
+  <button type="button" class="btn btn-default">Cancel</button>
+</form>

@@ -9,7 +9,7 @@ export class UnitService {
     private decodedJwt: string;
   
     constructor(public http: Http){
-        console.log('Unit Service created.', http);
+        
         
         this.jwt = localStorage.getItem('jwt');
         
@@ -64,7 +64,7 @@ export class UnitService {
         });
     }
     
-    getUnit(id: number){
+    getUnit(id: string){
         var headers = new Headers();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'text/plain');
@@ -77,10 +77,7 @@ export class UnitService {
         .map( (responseData) => {
             return responseData.json();
         })
-        .map((unit: Unit) => {
-            
-            console.log(unit);
-            
+        .map((unit: any) => {                                                    
             return unit;
         });
     }
