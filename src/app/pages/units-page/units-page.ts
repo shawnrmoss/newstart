@@ -1,19 +1,17 @@
-/*
- * Created with IntelliJ IDEA.
- * User: mfo
- * Date: 12/18/15
- * Time: 9:55 AM
- */
 import {Component} from "angular2/core";
-import {Header} from '../../components/header/header';
-import {Units} from '../../components/unitsContainer/unitsContainer';
+//Service
 import {AuthService} from '../../services/auth.service';
+
+//Components
+import {Header} from '../../components/header/header';
+import {Sidebar} from '../../components/sidebar/sidebar';
+import {Units} from '../../components/unitsContainer/unitsContainer';
 
 import './units-page.scss';
 
 @Component({
     selector: 'units-page',
-    directives: [Header, Units],   
+    directives: [Header, Sidebar, Units],   
     template: require('./units-page.html')
 })
 export class UnitsPage {

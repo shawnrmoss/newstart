@@ -1,12 +1,12 @@
 import {Component} from 'angular2/core';
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
+import {RouterLink} from 'angular2/router';
 import './header.scss';
 
 @Component({
   selector: 'header',
   template: require('./header.html'),
-  providers: [MATERIAL_PROVIDERS],
-  directives: [MATERIAL_DIRECTIVES]
+  providers: [],
+  directives: [RouterLink]
 })
 export class Header {
   constructor() {}

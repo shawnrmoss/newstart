@@ -1,25 +1,16 @@
-<header >    
-</header>
+<header></header>
 <md-content class="md-padding" 
             layout="row" 
             layout-wrap 
             layout-align="center start"
-            >
-            
+            > 
+                       
   <div flex="30" layout="column" flex-xs="100">
-        <span>Unit Services</span>
-        <md-list>           
-            <md-list-item class="md-3-line" *ngFor="#item of todos; #index = index">
-                <img [src]="item.face+'?'+index" class="md-avatar" alt="{{item.who}}"/>
-                <div class="md-list-item-text" layout="column">
-                <h3>{{ item.who }}</h3>
-                <h4>{{ item.what }}</h4>
-                <p>{{ item.notes }}</p>
-                </div>
-            </md-list-item>
-         </md-list>             
-  </div>
+        <sidebar></sidebar>
+  </div> 
+  
   <div flex="70" layout="column" flex-xs="100">
-    <units-container > </units-container>
-  </div>
+        <units-container > </units-container>
+   </div>
+   
 </md-content>

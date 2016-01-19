@@ -10,7 +10,39 @@
 @import '~/node_modules/angular-material-data-table/dist/md-data-table.min.css';
 
 
+.sidebar, .sidebar:before {
+    width:30%;
+}
+.sidebar {
+    float:left;
+    padding: 20px 30px;
+    color: #ebeef3;
+    font-size: 90%;
+}
+.sidebar:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    left: 80%;
+    background-color: #434750;
+}
 
-@import './src/accountservices/components/login-form/login-form.scss';
-
-
+.content, .content:before {
+    width:70%;
+}
+.content {
+    float:left;
+    padding: 20px 30px;
+    color: #6d7072;
+}
+.content:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    left: 0;
+    background: #fff;
+}

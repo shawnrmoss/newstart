@@ -17,8 +17,7 @@ import './loginForm.scss';
 export class LoginForm {
     loginForm: ControlGroup;
     message: string;
-    credentials = {
-        customerName: '',
+    credentials = {        
         email: '',
         password: ''
     };
@@ -26,11 +25,7 @@ export class LoginForm {
         fb: FormBuilder,
         public http: Http,
         public router: Router ) {
-            this.loginForm = fb.group({
-            'customerName': ['', Validators.compose([
-                Validators.required,
-                Validators.maxLength(50)
-            ])],
+            this.loginForm = fb.group({            
             'email': ['', Validators.compose([
                 MdPatternValidator.inline('^.+@.+\..+$'),
                 Validators.required,

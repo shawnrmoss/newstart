@@ -1,16 +1,5 @@
 <form [ngFormModel]="loginForm"
-      (ngSubmit)="onSubmit(loginForm.value)" >
-    <md-input-container class="md-block">
-        <label for="customerName">Customer Name</label>
-        <input md-input 
-            ngControl="customerName" 
-            id="customerName" 
-            [(value)]="credentials.customerName">
-        <div md-messages="customerName">
-            <div md-message="required">This is required.</div>
-            <div md-message="maxlength">The customer name has to be less than 50 characters long.</div>
-        </div>
-    </md-input-container>      
+      (ngSubmit)="onSubmit(loginForm.value)" >      
     <md-input-container class="md-block">
         <label for="email">Email</label>
         <input md-input 

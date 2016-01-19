@@ -9,8 +9,12 @@ import {LoggedInRouterOutlet} from './directives/loggedinrouteroutlet.directive'
 import {HomePage} from './pages/home-page/home-page';
 import {LoginPage} from './pages/login-page/login-page';
 import {UnitsPage} from './pages/units-page/units-page';
-
-
+import {DriversPage} from './pages/drivers-page/drivers-page';
+import {MileagePage} from './pages/mileage-page/mileage-page';
+import {LocationsPage} from './pages/locations-page/locations-page';
+import {HelpPage} from './pages/help-page/help-page';
+import {AboutPage} from './pages/about-page/about-page';
+import {LogoffPage} from './pages/logoff-page/logoff-page';
 
 import '../assets/scss/main.scss';
 
@@ -26,7 +30,13 @@ import '../assets/scss/main.scss';
 @RouteConfig([
   { path: '/', component: HomePage, name: 'HomePage' },
   { path: '/login', component: LoginPage, name: 'LoginPage' },
-  { path: '/units', component: UnitsPage, name: 'UnitsPage' },  
+  { path: '/units', component: UnitsPage, name: 'UnitsPage' },
+  { path: '/drivers', component: DriversPage, name: 'DriversPage' },  
+  { path: '/mileage', component: MileagePage, name: 'MileagePage' },  
+  { path: '/locations', component: LocationsPage, name: 'LocationsPage' },  
+  { path: '/help', component: HelpPage, name: 'HelpPage' },  
+  { path: '/aboutus', component: AboutPage, name: 'AboutPage' },  
+  { path: '/logoff', component: LogoffPage, name: 'LogoffPage' },    
   { path: '/**', redirectTo: ['HomePage'] }
 ])
 export class App {
