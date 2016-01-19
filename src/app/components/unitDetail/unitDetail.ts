@@ -15,41 +15,36 @@ export class UnitDetail implements OnInit {
   
   powers = ['Really Smart', 'Super Flexible',
             'Super Hot', 'Weather Changer'];
-            
-  unit = new Unit(0, 
-                    0,
-                    0,
-                    '3000897',
-                    2015,
-                    'Toyota',
-                    'Tundra',
-                    '',
-                    '',
-                    true,
-                    null,
-                    24,
-                    1,
-                    true,
-                    null, //Created by userID set here or on server
-                    null,
-                    new Date(),
-                    null, 
-                    null, 
-                    null
-                    );
-  
+   
+  public unit: Unit;          
+    
   constructor(
     private _service: UnitService,
     private _router: Router,
     private _params: RouteParams
-    ) {}
+    ) {   
+        //Initialize and new unit by default.     
+        this.unit = new Unit(0,0, 0, '', null, '', '', '', '', null, null, 0, 0, false, null, null, new Date(), null, null, null );
+  }
   
+  submitted = false;
+
+  onSubmit() { 
+      this.submitted = true; 
+      let response = null;
+      this._service.createUnit(this.unit).subscribe(res => response = res);
+        
+  }
+
   ngOnInit() {
-    let unitID = this._params.get('id');    
-    console.log(unitID);
-    //this._service.getUnit(unitID).subscribe(res => this.unit = res);      
-    
-    console.log(this.unit);  
+    let unitID = this._params.get('id');  
+    if(unitID != "0") 
+    {
+        let tempUnit = null;
+        this._service.getUnit(unitID).subscribe(res => tempUnit = res);    
+
+        console.log(tempUnit);
+    }                                      
   }
   
  
