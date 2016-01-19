@@ -92,6 +92,7 @@ export class AuthService {
         this.token = null;
         this.emitAuthStatus(true);
         console.log('Session has been cleared');
+        
     }
 
     private emitAuthStatus(success:boolean) {

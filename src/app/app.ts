@@ -9,6 +9,7 @@ import {LoggedInRouterOutlet} from './directives/loggedinrouteroutlet.directive'
 import {HomePage} from './pages/home-page/home-page';
 import {LoginPage} from './pages/login-page/login-page';
 import {UnitsPage} from './pages/units-page/units-page';
+import {UnitDetailsPage} from './pages/unitDetails-page/unitDetails-page';
 import {DriversPage} from './pages/drivers-page/drivers-page';
 import {MileagePage} from './pages/mileage-page/mileage-page';
 import {LocationsPage} from './pages/locations-page/locations-page';
@@ -27,12 +28,13 @@ import '../assets/scss/main.scss';
 @Component({
   selector: 'app',
   directives: [ROUTER_DIRECTIVES, ProtectedDirective, LoggedInRouterOutlet],  
-  template: `<loggedin-router-outlet></loggedin-router-outlet>`
+  template: `<router-outlet></router-outlet>`
 })
 @RouteConfig([
   { path: '/', component: HomePage, name: 'HomePage' },
-  { path: '/login', component: LoginPage, name: 'LoginPage' },
+  { path: '/login', component: LoginPage, name: 'LoginPage', useAsDefault: true},
   { path: '/units', component: UnitsPage, name: 'UnitsPage' },
+  { path: '/units/detail/:id', component: UnitDetailsPage, name: 'UnitDetailsPage' },
   { path: '/drivers', component: DriversPage, name: 'DriversPage' },  
   { path: '/mileage', component: MileagePage, name: 'MileagePage' },  
   { path: '/locations', component: LocationsPage, name: 'LocationsPage' },  

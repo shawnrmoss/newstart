@@ -56,7 +56,9 @@ export class LoginForm {
             .subscribe(
                 data => {
                     //Store the jwt
-                    this.saveJwt(data.json());                    
+                    localStorage.setItem('jwt', data.json().id_token);
+                    
+                                 
 
                     //Add router and redirect to authenticated app                    
                     this.router.navigate(['HomePage']);

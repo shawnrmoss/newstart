@@ -1,4 +1,6 @@
-import {Component} from "angular2/core";
+import { Component } from "angular2/core";
+import { RouterLink } from 'angular2/router';
+
 //Service
 import {AuthService} from '../../services/auth.service';
 
@@ -10,7 +12,7 @@ import './units-page.scss';
 
 @Component({
     selector: 'units-page',
-    directives: [Header, UnitsContainer],   
+    directives: [Header, UnitsContainer, RouterLink],   
     template: require('./units-page.html')
 })
 export class UnitsPage {
