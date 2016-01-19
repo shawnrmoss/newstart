@@ -15,6 +15,8 @@ import {LocationsPage} from './pages/locations-page/locations-page';
 import {HelpPage} from './pages/help-page/help-page';
 import {AboutPage} from './pages/about-page/about-page';
 import {LogoffPage} from './pages/logoff-page/logoff-page';
+import {UsersPage} from './pages/users-page/users-page';
+import {SettingsPage} from './pages/settings-page/settings-page';
 
 import '../assets/scss/main.scss';
 
@@ -36,7 +38,9 @@ import '../assets/scss/main.scss';
   { path: '/locations', component: LocationsPage, name: 'LocationsPage' },  
   { path: '/help', component: HelpPage, name: 'HelpPage' },  
   { path: '/aboutus', component: AboutPage, name: 'AboutPage' },  
-  { path: '/logoff', component: LogoffPage, name: 'LogoffPage' },    
+  { path: '/logoff', component: LogoffPage, name: 'LogoffPage' },
+  { path: '/settings', component: SettingsPage, name: 'SettingsPage' },  
+  { path: '/users', component: UsersPage, name: 'UsersPage' },      
   { path: '/**', redirectTo: ['HomePage'] }
 ])
 export class App {

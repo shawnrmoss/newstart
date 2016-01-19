@@ -31,10 +31,23 @@
           </ul>
         </li>
       </ul>      
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Account</a></li>
+      <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+                <a [routerLink]=" ['LocationsPage']" > Locations</a>
+            </li>    
+            <li>
+                <a [routerLink]=" ['SettingsPage']" > Settings</a></li>            
+            <li role="separator" class="divider"></li>
+            <li>
+                <a [routerLink]=" ['UsersPage']" > Users</a>
+            </li>
+          </ul>
+        </li>      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a [routerLink]=" ['HelpPage']" > Help</a></li>
             <li><a [routerLink]=" ['AboutPage']" > About Us</a></li>            
