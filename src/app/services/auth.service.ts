@@ -26,15 +26,16 @@ export class AuthService {
             headers: headers
         })
         .map(res => {                                    
-            localStorage.setItem('jwt', res.json().id_token);    
-                            
-            //I also want to grab permissions and user info and set as private variables.                                                                                                        
-            this.authenticated = true;
+            localStorage.setItem('jwt', res.json().access_token);            
+            localStorage.setItem('expires', res.json()['.expires']); 
+            localStorage.setItem('userName', res.json().userName);                                                                                                                                             
         });        
     }
     
     public logout() {
-        localStorage.removeItem('jwt');         
+        localStorage.removeItem('jwt');  
+        localStorage.removeItem('expires');  
+        localStorage.removeItem('userName');                         
     }
         
     public isAuthenticated() {

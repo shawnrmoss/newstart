@@ -32,8 +32,7 @@ export class UnitDetail implements OnInit {
   onSubmit() { 
       this.submitted = true; 
       let response = null;
-      this._service.createUnit(this.unit).subscribe(res => response = res);
-        
+      this._service.createUnit(this.unit).subscribe(res => response = res);        
   }
 
   ngOnInit() {
@@ -41,9 +40,7 @@ export class UnitDetail implements OnInit {
     if(unitID != "0") 
     {
         let tempUnit = null;
-        this._service.getUnit(unitID).subscribe(res => tempUnit = res);    
-
-        console.log(tempUnit);
+        this._service.getUnit(unitID).subscribe(res => tempUnit = res);            
     }                                      
   }
   
