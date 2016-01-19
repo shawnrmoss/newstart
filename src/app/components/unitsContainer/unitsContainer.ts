@@ -1,6 +1,5 @@
 import {Component} from 'angular2/core';
 import {Router} from 'angular2/router';
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
 
 //Services
 import {UnitService} from '../../services/units.service';
@@ -11,8 +10,8 @@ import {UnitService} from '../../services/units.service';
 @Component({
   selector: 'units-container',
   template: require('./unitsContainer.html'),
-  providers: [MATERIAL_PROVIDERS],
-  directives: [MATERIAL_DIRECTIVES]
+  providers: [],
+  directives: []
 })
 export class Units {  
   constructor(
