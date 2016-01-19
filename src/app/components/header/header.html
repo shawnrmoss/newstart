@@ -52,7 +52,7 @@
             <li><a [routerLink]=" ['HelpPage']" > Help</a></li>
             <li><a [routerLink]=" ['AboutPage']" > About Us</a></li>            
             <li role="separator" class="divider"></li>
-            <li><a [routerLink]=" ['LogoffPage']" > Logoff</a></li>
+            <li><a (click)="onLogOff()" > Logoff</a></li>
           </ul>
         </li>
       </ul>

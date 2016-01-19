@@ -25,10 +25,7 @@ export class AuthService {
         return this.http.post('http://summitapi.azurewebsites.net/Token', body, {
             headers: headers
         })
-        .map(res => {
-            
-            //Store the jwt
-            this.token = res.json().id_token;
+        .map(res => {                                    
             localStorage.setItem('jwt', res.json().id_token);    
                             
             //I also want to grab permissions and user info and set as private variables.                                                                                                        
@@ -37,13 +34,11 @@ export class AuthService {
     }
     
     public logout() {
-        this.authenticated = false;        
-        this.expires = 0;
-        this.token = null;                        
+        localStorage.removeItem('jwt');         
     }
         
     public isAuthenticated() {
-        return this.authenticated;
+        return localStorage.getItem('jwt') != null;
     }
 
     logError(err) {

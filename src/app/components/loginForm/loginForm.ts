@@ -32,8 +32,7 @@ export class LoginForm {
         this.loading = true;
         this.auth.signIn(this.credential)
                  .subscribe(
-                     data => {
-                        console.log(this.auth.isAuthenticated());
+                     data => {                        
                         this.loading = false;                              
                         this.router.navigate(['HomePage']);                            
                      },

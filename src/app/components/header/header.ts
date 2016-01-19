@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {RouterLink} from 'angular2/router';
+import { Component } from 'angular2/core';
+import { Router, RouterLink } from 'angular2/router';
 import { AuthService } from '../../services/auth.service';
 
 import './header.scss';
@@ -11,11 +11,13 @@ import './header.scss';
   directives: [RouterLink]
 })
 export class Header {
-  constructor(private auth: AuthService) {
-      
+  constructor(private auth: AuthService,
+              private router: Router) {
+        console.log(auth.isAuthenticated());          
   }
   
-  onLogoff(){   
-    this.auth.logout();    
+  onLogOff(){   
+    this.auth.logout();  
+    this.router.navigate(['LoginPage']);    
   }
 }
