@@ -13,7 +13,9 @@ import './header.scss';
 export class Header {
   constructor(private auth: AuthService,
               private router: Router) {
-        console.log(auth.isAuthenticated());          
+                  
+    console.log(auth.isAuthenticated());  
+            
   }
   
   onLogOff(){   
