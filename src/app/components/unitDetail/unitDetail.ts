@@ -2,6 +2,7 @@ import {Component, OnInit} from 'angular2/core';
 import {Router, RouteParams, RouterLink } from 'angular2/router';
 import {UnitService} from '../../services/units.service';
 import {Unit} from '../../datatypes/unit';
+import {UnitStatus} from '../../datatypes/unitstatus';
 
 import './unitDetail.scss';
 
@@ -11,20 +12,19 @@ import './unitDetail.scss';
   providers: [UnitService],
   directives: []
 })
-export class UnitDetail implements OnInit {
-  
-  powers = ['Really Smart', 'Super Flexible',
-            'Super Hot', 'Weather Changer'];
-   
-  public unit: Unit;          
+export class UnitDetail implements OnInit {   
+  public unitStatuses: string[];   
+  public unit: Unit;            
     
   constructor(
-    private _service: UnitService,
+    private unitService: UnitService,
     private _router: Router,
     private _params: RouteParams
-    ) {   
-        //Initialize and new unit by default.     
+    ) {                                  
         this.unit = new Unit(0,0, 0, '', null, '', '', '', '', null, null, 0, 0, false, null, null, new Date(), null, null, null );
+        this.unitService.getUnitStatuses().subscribe(res => {
+            this.unitStatuses = res;            
+        });
   }
   
   submitted = false;
@@ -32,17 +32,18 @@ export class UnitDetail implements OnInit {
   onSubmit() { 
       this.submitted = true; 
       let response = null;
-      this._service.createUnit(this.unit).subscribe(res => response = res);        
+      
+      
+      //this.unitService.createUnit(this.unit).subscribe(res => response = res);        
   }
 
-  ngOnInit() {
+  ngOnInit() {        
     let unitID = this._params.get('id');  
     if(unitID != "0") 
     {
         let tempUnit = null;
-        this._service.getUnit(unitID).subscribe(res => tempUnit = res);            
+        this.unitService.getUnit(unitID).subscribe(res => tempUnit = res);            
     }                                      
   }
-  
- 
+    
 }

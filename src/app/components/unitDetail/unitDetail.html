@@ -16,10 +16,10 @@
         </div>  
         <div flex="50" layout="column" flex-xs="100">
             <div class="form-group">
-                <label for="power">Status</label>
-                <select class="form-control"  required ngControl="power" >
-                    <option *ngFor="#p of powers" [value]="p">{{p}}</option>
-                </select>
+                <label for="unitStatus">Status</label>
+                <select class="form-control"  required ngControl="unitStatus" >
+                    <option *ngFor="#us of unitStatuses" [value]="us">{{us}}</option>
+                </select>                                
             </div>               
         </div>  
     </div>

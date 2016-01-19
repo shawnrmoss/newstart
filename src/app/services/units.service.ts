@@ -1,6 +1,7 @@
 import { Http, Headers } from 'angular2/http';
 import { Injectable } from 'angular2/core';
 import { Unit } from '../datatypes/unit';
+import { UnitStatus } from '../datatypes/unitstatus';
  
 @Injectable()
 export class UnitService {
@@ -9,9 +10,7 @@ export class UnitService {
     private decodedJwt: string;
   
     constructor(public http: Http){                
-        this.jwt = localStorage.getItem('jwt');        
-        // We also store the decoded JSON from this JWT
-        //this.decodedJwt = this.jwt && jwt_decode(this.jwt);
+        this.jwt = localStorage.getItem('jwt');                
     }    
        
     getUnits() { 
@@ -95,6 +94,30 @@ export class UnitService {
         })
         .map((unit: any) => {                                                    
             return unit;
+        });
+    }
+    
+    getUnitStatuses(){
+        var headers = new Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'text/plain');
+        headers.append('Authorization', 'Bearer ' + this.jwt);
+        
+        // return an observable
+        return this.http.get('http://summitapi.azurewebsites.net/api/units/statuses', {
+            headers: headers
+        })
+        .map( (responseData) => {
+            return responseData.json();
+        })
+        .map((unitStatuses: Array<any>) => {            
+            let result:Array<string> = [];
+            if (unitStatuses) {                
+                unitStatuses.forEach((unitStatus) => {
+                    result.push(unitStatus.Name);
+                });
+            }            
+            return result;
         });
     }
         

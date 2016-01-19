@@ -19,7 +19,7 @@ export class UnitTable implements OnInit {
     private _router: Router) {}
   
   ngOnInit() {
-    this._service.getUnits().subscribe(res => this.units = res);;
+    this._service.getUnits().subscribe(res => this.units = res);
   }
   
   onSelect(unit: Unit){
