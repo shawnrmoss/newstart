@@ -3,7 +3,6 @@
  */
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteConfig, ROUTER_PROVIDERS, RouterOutlet} from 'angular2/router';
-import {ProtectedDirective} from './directives/protected.directive';
 import {LoggedInRouterOutlet} from './directives/loggedinrouteroutlet.directive';
 
 import {HomePage} from './pages/home-page/home-page';
@@ -27,7 +26,7 @@ import '../assets/scss/main.scss';
  */
 @Component({
   selector: 'app',
-  directives: [ROUTER_DIRECTIVES, ProtectedDirective, LoggedInRouterOutlet],  
+  directives: [ROUTER_DIRECTIVES, LoggedInRouterOutlet],  
   template: `<router-outlet></router-outlet>`
 })
 @RouteConfig([

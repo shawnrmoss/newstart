@@ -1,27 +1,27 @@
 export class Unit {
 
-    unitID: number;     
-    activePlateID: number; 
-    unitStatusID: number;
+    public unitID: number;     
+    public activePlateID: number; 
+    public unitStatusID: number;
 
-    unitNumber: string;
-    year: number;
-    make: string;
-    model: string;
-    trim: string;
-    vin: string;
-    isPoolUnit: boolean;
-    inServiceDate: Date;
-    term: number;
-    costCenter: number;
-    factoryStock: boolean;
+    public unitNumber: string;
+    public year: number;
+    public make: string;
+    public model: string;
+    public trim: string;
+    public vin: string;
+    public isPoolUnit: boolean;
+    public inServiceDate: Date;
+    public term: number;
+    public costCenter: number;
+    public factoryStock: boolean;
     
-    createdByUserID: number;
-    createdByUserName: string;    
-    createdOn: Date;
-    deletedByUserID: number;
-    deletedByUserName: string;
-    deletedOn: Date;
+    public createdByUserID: number;
+    public createdByUserName: string;    
+    public createdOn: Date;
+    public deletedByUserID: number;
+    public deletedByUserName: string;
+    public deletedOn: Date;
         
     //full constructor       
     constructor(unitID: number, 
