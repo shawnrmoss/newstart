@@ -1,28 +1,26 @@
-<form [ngFormModel]="loginForm"
-      (ngSubmit)="onSubmit(loginForm.value)" >      
-    <md-input-container class="md-block">
-        <label for="email">Email</label>
-        <input md-input 
-            type="email" 
-            ngControl="email" 
-            id="email" 
-            [(value)]="credentials.email" />
-        <div md-messages="email" role="alert">
-        <div md-message>Your email must be between 10 and 100 characters long and look like an e-mail address.</div>
-        </div>
-    </md-input-container>
-    <md-input-container class="md-block">
-        <label for="password">Password</label>
-        <input md-input 
-            type="password" 
-            ngControl="password" 
-            id="password" 
-            [(value)]="credentials.password" />
-        <div md-messages="password" role="alert">
-        <div md-message>Password expresion that requires one lower case letter, one upper case letter, one digit, 6-13 length, and no spaces.</div>
-        </div>        
-    </md-input-container>     
-    <md-input-container class="md-block">
-        <button type="submit" md-raised-button class="md-raised md-primary" >Sign In</button>         
-    </md-input-container>           
+
+<form (ngSubmit)="onSubmit(loginForm.value)" #loginForm="ngForm">  
+    <div layout="row" 
+             layout-wrap 
+             layout-align="center start"
+            >                    
+        <div flex="100" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" id="email" type="email" required [(ngModel)]="credentials.email" ngControl="email" #email="ngForm">                
+            </div>       
+        </div>  
+    </div>   
+    <div layout="row" 
+             layout-wrap 
+             layout-align="center start"
+            >                    
+        <div flex="100" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" type="password" required [(ngModel)]="credentials.password" ngControl="password" #password="ngForm">               
+            </div>       
+        </div>  
+    </div>     
+    <button type="submit"class="btn btn-success" [disabled]="!loginForm.form.valid" >Sign In</button>             
 </form>

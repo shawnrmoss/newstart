@@ -1,7 +1,6 @@
 import {Component} from 'angular2/core';
 import { Http, Headers, HTTP_PROVIDERS } from 'angular2/http';
 import { Router } from 'angular2/router';
-import { MdPatternValidator, MdMinValueValidator, MdNumberRequiredValidator, MdMaxValueValidator, MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import { FORM_DIRECTIVES, Validators, FormBuilder, ControlGroup} from 'angular2/common';
 
 import {RequestOptions, RequestMethod} from 'angular2/http';
@@ -11,7 +10,7 @@ import './loginForm.scss';
 @Component({
   selector: 'login-form',
   template: require('./loginForm.html'),
-  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES],
+  directives: [],
   providers: [HTTP_PROVIDERS]
 })
 export class LoginForm {
@@ -21,24 +20,11 @@ export class LoginForm {
         email: '',
         password: ''
     };
+    
     constructor(
         fb: FormBuilder,
         public http: Http,
-        public router: Router ) {
-            this.loginForm = fb.group({            
-            'email': ['', Validators.compose([
-                MdPatternValidator.inline('^.+@.+\..+$'),
-                Validators.required,
-                Validators.minLength(10),
-                Validators.maxLength(100)
-            ])],
-            'password': ['', Validators.compose([
-                //MdPatternValidator.inline('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$'),
-                Validators.required,
-                Validators.minLength(10),
-                Validators.maxLength(100)
-            ])]
-        });
+        public router: Router) {                   
     }
 
     onSubmit(data: string) {
@@ -49,6 +35,7 @@ export class LoginForm {
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'text/plain');
 
+        //Move this to the auth service
         //Call web api for a jwt token
         this.http.post('http://summitapi.azurewebsites.net/Token', creds, {
                 headers: headers
@@ -56,10 +43,7 @@ export class LoginForm {
             .subscribe(
                 data => {
                     //Store the jwt
-                    localStorage.setItem('jwt', data.json().id_token);
-                    
-                                 
-
+                    localStorage.setItem('jwt', data.json().id_token);                                                     
                     //Add router and redirect to authenticated app                    
                     this.router.navigate(['HomePage']);
                 },
