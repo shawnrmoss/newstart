@@ -41,6 +41,10 @@ export class AuthService {
     public isAuthenticated() {
         return localStorage.getItem('jwt') != null;
     }
+    
+    public getUsername() {
+        return localStorage.getItem('userName');
+    }
 
     logError(err) {
         console.error('There was an error: ' + err);

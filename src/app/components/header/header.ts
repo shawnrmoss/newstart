@@ -11,11 +11,12 @@ import './header.scss';
   directives: [RouterLink]
 })
 export class Header {
+  public loggedInUsername: string;
+    
   constructor(private auth: AuthService,
               private router: Router) {
                   
-    console.log(auth.isAuthenticated());  
-            
+     this.loggedInUsername = auth.getUsername();             
   }
   
   onLogOff(){   
