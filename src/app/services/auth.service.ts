@@ -7,6 +7,9 @@ import { Credential } from '../datatypes/credential';
 @Injectable()
 export class AuthService {
     
+    //private BASE_SERVICE_URL = 'http://localhost:65052/';
+    private BASE_SERVICE_URL = 'http://summitapi.azurewebsites.net/';
+    
     private authenticated: boolean;
     private token:string;
     private expires:any = 0;
@@ -20,12 +23,13 @@ export class AuthService {
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'text/plain');
                         
-        let body = 'userName=' + cred.email + '&password=' + cred.password + '&grant_type=password';
+        let body = 'userName=' + cred.email + '&password=' + cred.password + '&grant_type=password';        
         
-        return this.http.post('http://summitapi.azurewebsites.net/Token', body, {
+        return this.http.post(this.BASE_SERVICE_URL + 'Token', body, {
             headers: headers
         })
-        .map(res => {                                    
+        .map(res => {    
+            console.log(res);                                
             localStorage.setItem('jwt', res.json().access_token);            
             localStorage.setItem('expires', res.json()['.expires']); 
             localStorage.setItem('userName', res.json().userName);                                                                                                                                             

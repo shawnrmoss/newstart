@@ -32,8 +32,8 @@ import '../assets/scss/main.scss';
 @RouteConfig([
   { path: '/', component: HomePage, name: 'HomePage' },
   { path: '/login', component: LoginPage, name: 'LoginPage', useAsDefault: true},
-  { path: '/units', component: UnitsPage, name: 'UnitsPage' },
-  { path: '/units/detail/:id', component: UnitDetailsPage, name: 'UnitDetailsPage' },
+  { path: '/units', component: UnitsPage, name: 'UnitsPage' },  
+  { path: '/units/:id', component: UnitDetailsPage, name: 'UnitDetailsPage' },
   { path: '/drivers', component: DriversPage, name: 'DriversPage' },  
   { path: '/mileage', component: MileagePage, name: 'MileagePage' },  
   { path: '/locations', component: LocationsPage, name: 'LocationsPage' },  

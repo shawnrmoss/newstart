@@ -20,10 +20,13 @@ export class UnitTable implements OnInit {
   
   ngOnInit() {
     this._service.getUnits().subscribe(res => this.units = res);
+    
+     console.log(this.units);
   }
   
   onSelect(unit: Unit){
-    console.log(unit);
+   
     this._router.navigate( ['UnitDetail', { id: unit.unitID }] );
   }
+  
 }
