@@ -18,12 +18,14 @@ import './unitDetail.scss';
   directives: [MATERIAL_DIRECTIVES],
 })
 export class UnitDetail implements OnInit {   
-  private unitStatuses: Array<UnitStatus>;   
+  private unitStatuses: Array<UnitStatus>; 
+  private SUBMIT_ACTION: string;  
   //We use this array to bind to the Unit Statuses select list.
   submitted = false;
   public loading: boolean;    
   public selectedStatus: string;
   public statuses: Array<string>;
+  
   public unit: Unit;            
   
   
@@ -32,8 +34,28 @@ export class UnitDetail implements OnInit {
     private unitService: UnitService,
     private _router: Router,
     private _params: RouteParams
-    ) {                                  
-        this.unit = new Unit(0,0, 0, '', null, '', '', '', '', null, null, 0, 0, false, null, null, new Date(), null, null, null );
+    ) {         
+        //initia an empty unit to bind to                          
+        this.unit = new Unit(0, 
+                             null, 
+                             null, 
+                             '', 
+                             null, 
+                             '', 
+                             '', 
+                             '', 
+                             '', 
+                             false, //IsPoolUnit 
+                             null, 
+                             0, 
+                             0, 
+                             false, //Factory Stock
+                             null, 
+                             '', 
+                             new Date(), 
+                             null, 
+                             null, 
+                             null);
         this.unitService.getUnitStatuses().subscribe(res => {
             this.unitStatuses = res;      
             
@@ -50,15 +72,19 @@ export class UnitDetail implements OnInit {
   
   //Then you have a chance to re-initialize when the dom is ready.
   ngOnInit() {        
-    let unitID = this._params.get('id');      
-    if(unitID != "0") 
-    {        
+    let unitID = this._params.get('id');           
+    if(!isNaN(parseInt(unitID))) 
+    {       
+        this.SUBMIT_ACTION = 'UPDATE';
         this.unitService.getUnit(unitID)
         .subscribe(res => {           
             this.unit = res        
             this.loading = false;                                           
         });                            
-    }                                      
+    }  
+    else{
+        this.SUBMIT_ACTION = 'CREATE';        
+    }                                    
   }
   
   onChange(deviceValue) {
@@ -69,17 +95,28 @@ export class UnitDetail implements OnInit {
       this.submitted = true; 
       let response = null;      
       
-      //Get the id of the currently select unit status        
+      //Get the id of the currently select unit status and update the unit      
       let target = this.selectedStatus;       
       let arrayLength = this.unitStatuses.length;                
       for (var i = 0; i < arrayLength; i++) {
         if(this.unitStatuses[i].name === target) this.unit.unitStatusID = this.unitStatuses[i].unitStatusID;
       }         
       
-      //Go to here check the service
-      this.unitService.createUnit(this.unit).subscribe(res => {         
-          console.log(response);
-      });        
+      switch(this.SUBMIT_ACTION) {
+        case "CREATE":
+            //Call the create unit function from the unit service
+            this.unitService.createUnit(this.unit).subscribe(
+                this._router.navigate( ['UnitsPage'] )
+            );
+            break;
+        case "UPDATE":
+            //Call the update unit function from the unit service
+            // / 
+            this.unitService.updateUnit(this.unit).subscribe(res => {                                  
+                this._router.navigate( ['UnitsPage'] )
+            });
+            break;               
+      }           
   }
 
   

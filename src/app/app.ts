@@ -34,6 +34,7 @@ import '../assets/scss/main.scss';
   { path: '/login', component: LoginPage, name: 'LoginPage', useAsDefault: true},
   { path: '/units', component: UnitsPage, name: 'UnitsPage' },  
   { path: '/units/:id', component: UnitDetailsPage, name: 'UnitDetailsPage' },
+  { path: '/units/create', component: UnitDetailsPage, name: 'CreateUnit' },
   { path: '/drivers', component: DriversPage, name: 'DriversPage' },  
   { path: '/mileage', component: MileagePage, name: 'MileagePage' },  
   { path: '/locations', component: LocationsPage, name: 'LocationsPage' },  

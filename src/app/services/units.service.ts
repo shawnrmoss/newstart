@@ -19,7 +19,7 @@ export class UnitService {
     getUnits() { 
         var headers = new Headers();
         headers.append('Accept', 'application/json');
-        headers.append('Content-Type', 'text/plain');
+        headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'Bearer ' + this.jwt);
         
         // return an observable
@@ -66,7 +66,7 @@ export class UnitService {
     getUnit(id: string){
         var headers = new Headers();
         headers.append('Accept', 'application/json');
-        headers.append('Content-Type', 'text/plain');
+        headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'Bearer ' + this.jwt);
         
         // return an observable
@@ -102,29 +102,77 @@ export class UnitService {
     }
     
     createUnit(unit: Unit){
+        console.log("---------------------Create Unit");
         var headers = new Headers();
         headers.append('Accept', 'application/json');
-        headers.append('Content-Type', 'text/plain');
+        headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'Bearer ' + this.jwt);
+                
+        // create an object for the server must match the binding model for that route 
+        // In this case it matches our CreateUnitBindingModel
+        // Sometimes we have to transform data        
         
-        // return an observable
-        console.log(JSON.stringify(unit));
-        return this.http.put(this.BASE_SERVICE_URL + 'api/units/' + unit.unitID, JSON.stringify(unit), {
+        let unitToCreate = {            
+            "ActivePlateID" : unit.activePlateID,
+            "UnitStatusID": unit.unitStatusID,
+            "UnitNumber": unit.unitNumber,
+            "Year" : unit.year,
+            "Make" : unit.make,
+            "Model": unit.model,
+            "Trim" : unit.trim,
+            "VIN" : unit.vin,
+            "IsPoolUnit" : unit.isPoolUnit,
+            "InServiceDate" : unit.inServiceDate,
+            "Term" : unit.term,
+            "CostCenter" : unit.costCenter,
+            "FactoryStock" : unit.factoryStock          
+        };
+                
+        //convert back to server unit type
+        return this.http.post(this.BASE_SERVICE_URL + 'api/units', JSON.stringify(unitToCreate), {
             headers: headers
-        })
-        .map( (responseData) => {
-            console.log(responseData);
-            return responseData.json();
-        })
-        .map((unit: any) => {                                                    
-            return unit;
-        });
+        }) 
+        .map(res => res.json());
     }
+    
+    updateUnit(unit: Unit){
+        console.log("---------------------Update Unit");
+        var headers = new Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', 'Bearer ' + this.jwt);
+                
+        // create an object for the server must match the binding model for that route 
+        // In this case it matches our CreateUnitBindingModel
+        // Sometimes we have to transform data                
+        let unitToUpdate = {      
+            "UnitID" :  unit.unitID,  
+            "ActivePlateID" : unit.activePlateID,
+            "UnitStatusID": unit.unitStatusID,
+            "UnitNumber": unit.unitNumber,
+            "Year" : unit.year,
+            "Make" : unit.make,
+            "Model": unit.model,
+            "Trim" : unit.trim,
+            "VIN" : unit.vin,
+            "IsPoolUnit" : unit.isPoolUnit,
+            "InServiceDate" : unit.inServiceDate,
+            "Term" : unit.term,
+            "CostCenter" : unit.costCenter,
+            "FactoryStock" : unit.factoryStock          
+        };
+        
+        
+        //convert back to server unit type
+        return this.http.put(this.BASE_SERVICE_URL + 'api/units/' + unit.unitID, JSON.stringify(unitToUpdate), {
+            headers: headers
+        });
+    }        
     
     getUnitStatuses(){
         var headers = new Headers();
         headers.append('Accept', 'application/json');
-        headers.append('Content-Type', 'text/plain');
+        headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'Bearer ' + this.jwt);
         
         // return an observable
