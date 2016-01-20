@@ -25,7 +25,6 @@
     </div>     
     <div *ngIf="message != null" class="bg-danger">
         {{message}}
-    </div>
-    
-    <button type="submit"class="btn btn-success" [disabled]="!loginForm.form.valid" >Sign In</button>             
+    </div>    
+    <button type="submit" md-raised-button class="md-raised md-hue-6" [disabled]="!loginForm.form.valid" >Sign In</button>             
 </form>
