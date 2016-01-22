@@ -7,16 +7,26 @@
              layout-wrap 
              layout-align="center start"
             >            
-        <div flex="50" layout="column" flex-xs="100">
+        <div flex="33" layout="column" flex-xs="100">
             <div class="form-group">
                 <label for="unitNumber">Unit Number</label>
                 <input class="form-control" id="unitNumber" required [(ngModel)]="unit.unitNumber" ngControl="unitNumber" #unitNumber="ngForm">                
             </div>       
         </div>  
-        <div flex="50" layout="column" flex-xs="100">
+        <div flex="33" layout="column" flex-xs="100">
+            <div class="form-group">
+                <label for="division">Division</label>
+                <select class="form-control"  required ngControl="unitStatus" (change)="onDivisionChange($event.target.value)" >
+                    <option *ngFor="#us of statuses" [value]="us"  >
+                        {{us}}
+                    </option>
+                </select>                                
+            </div>               
+        </div>  
+        <div flex="33" layout="column" flex-xs="100">
             <div class="form-group">
                 <label for="unitStatus">Status</label>
-                <select class="form-control"  required ngControl="unitStatus" (change)="onChange($event.target.value)" >
+                <select class="form-control"  required ngControl="unitStatus" (change)="onStatusChange($event.target.value)" >
                     <option *ngFor="#us of statuses" [value]="us"  >
                         {{us}}
                     </option>
@@ -25,26 +35,23 @@
         </div>  
     </div>
     
-    <div layout="row" 
-             layout-wrap 
-             layout-align="center start"
-            >            
+    <div layout="row" layout-wrap layout-align="center start" >            
         <div flex="33" layout="column" flex-xs="100">
             <div class="form-group">
                 <label for="year">Year</label>
-                <input class="form-control" id="year" required [(ngModel)]="unit.year" ngControl="year" #year="ngForm">                
+                <input class="form-control" id="year" [(ngModel)]="unit.year" ngControl="year" #year="ngForm">                
             </div>     
         </div>  
         <div flex="34" layout="column" flex-xs="100">
             <div class="form-group">
                 <label for="make">Make</label>
-                <input class="form-control" id="make" placeholder="Make of Unit" [(ngModel)]="unit.make" ngControl="make"  required #make="ngForm">                
+                <input class="form-control" id="make" placeholder="Make of Unit" [(ngModel)]="unit.make" ngControl="make" #make="ngForm">                
             </div>      
         </div>  
         <div flex="33" layout="column" flex-xs="100">
             <div class="form-group">
                 <label for="model">Model</label>
-                <input class="form-control" id="model" placeholder="Model of Unit" [(ngModel)]="unit.model" ngControl="model"  required #model="ngForm">                
+                <input class="form-control" id="model" placeholder="Model of Unit" [(ngModel)]="unit.model" ngControl="model" #model="ngForm">                
             </div>   
         </div>  
     </div>

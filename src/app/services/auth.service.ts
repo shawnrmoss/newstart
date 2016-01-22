@@ -7,8 +7,8 @@ import { Credential } from '../datatypes/credential';
 @Injectable()
 export class AuthService {
     
-    private BASE_SERVICE_URL = 'http://localhost:65052/';
-    //private BASE_SERVICE_URL = 'http://summitapi.azurewebsites.net/';
+    //private BASE_SERVICE_URL = 'http://localhost:65052/';
+    private BASE_SERVICE_URL = 'http://summitapi.azurewebsites.net/';
     
     private authenticated: boolean;
     private token:string;

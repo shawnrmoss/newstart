@@ -17,77 +17,62 @@ import './unitDetail.scss';
   providers: [UnitService],
   directives: [MATERIAL_DIRECTIVES],
 })
-export class UnitDetail implements OnInit {   
+export class UnitDetail implements OnInit{   
   private unitStatuses: Array<UnitStatus>; 
   private SUBMIT_ACTION: string;  
-  //We use this array to bind to the Unit Statuses select list.
-  submitted = false;
+    
+  public submitted = false;
   public loading: boolean;    
   public selectedStatus: string;
-  public statuses: Array<string>;
+  public selectedDivision: string;
+  
+  public statuses: Array<string>; //We use this array to bind to the Unit Statuses select list.
   
   public unit: Unit;            
-  
-  
+    
   //Initialize in the constructor set class variables etc
-  constructor(
-    private unitService: UnitService,
-    private _router: Router,
-    private _params: RouteParams
-    ) {         
-        //initia an empty unit to bind to                          
-        this.unit = new Unit(0, 
-                             null, 
-                             null, 
-                             '', 
-                             null, 
-                             '', 
-                             '', 
-                             '', 
-                             '', 
-                             false, //IsPoolUnit 
-                             null, 
-                             0, 
-                             0, 
-                             false, //Factory Stock
-                             null, 
-                             '', 
-                             new Date(), 
-                             null, 
-                             null, 
-                             null);
-        this.unitService.getUnitStatuses().subscribe(res => {
-            this.unitStatuses = res;      
-            
-            //This is necessary because we can not bind a object to a select list 
-            //but we need the id to post later.            
-            var arrayLength = this.unitStatuses.length;
-            this.statuses = [];
-            var myStringArray = [];
-            for (var i = 0; i < arrayLength; i++) {
-                this.statuses.push(this.unitStatuses[i].name);                
-            }      
-        });                
-  }
-  
-  //Then you have a chance to re-initialize when the dom is ready.
-  ngOnInit() {        
+  constructor(private unitService: UnitService, private _router: Router, private _params: RouteParams) {            
+    //initialize an empty unit to bind to  
+    //The unit is two-way bound to the html form with [(ngModel)]                        
+    this.unit = new Unit(0, null, null, '', null, '', '', '', '', false, null, 0, 0, false, null, '', new Date(), null, null, null);
     let unitID = this._params.get('id');           
     if(!isNaN(parseInt(unitID))) 
     {       
         this.SUBMIT_ACTION = 'UPDATE';
         this.unitService.getUnit(unitID)
-        .subscribe(res => {           
+        .subscribe(res => { 
+            console.log("1");          
             this.unit = res        
             this.loading = false;                                           
         });                            
     }  
     else{
         this.SUBMIT_ACTION = 'CREATE';        
-    }                                    
+    }      
+    
+    this.unitService.getUnitStatuses().subscribe(res => {
+        this.unitStatuses = res;      
+        console.log("2");
+        //This is necessary because we can not bind a object to a select list 
+        //but we need the id to post later.            
+        var arrayLength = this.unitStatuses.length;
+        this.statuses = [];
+        var myStringArray = [];
+        for (var i = 0; i < arrayLength; i++) {
+            this.statuses.push(this.unitStatuses[i].name);                
+        }      
+    });                                                            
   }
   
-  onChange(deviceValue) {
+  ngOnInit() {        
+                     
+  }
+  
+  onDivisionChange(deviceValue) {
+    this.selectedDivision = deviceValue;
+  } 
+  
+  onStatusChange(deviceValue) {
     this.selectedStatus = deviceValue;
   }
 
@@ -105,20 +90,16 @@ export class UnitDetail implements OnInit {
       switch(this.SUBMIT_ACTION) {
         case "CREATE":
             //Call the create unit function from the unit service
-            this.unitService.createUnit(this.unit).subscribe(
-                this._router.navigate( ['UnitsPage'] )
-            );
+            this.unitService.createUnit(this.unit).subscribe( res => {                
+                this._router.navigate( ['UnitsPage'] );
+            });
             break;
         case "UPDATE":
-            //Call the update unit function from the unit service
-            // / 
-            this.unitService.updateUnit(this.unit).subscribe(res => {                                  
-                this._router.navigate( ['UnitsPage'] )
+            //Call the update unit function from the unit service            
+            this.unitService.updateUnit(this.unit).subscribe(res => {                                            
+                this._router.navigate( ['UnitsPage'] )                       
             });
             break;               
       }           
-  }
-
-  
-    
+  }      
 }

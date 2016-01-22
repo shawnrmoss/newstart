@@ -6,8 +6,8 @@ import { UnitStatus } from '../datatypes/unitstatus';
 @Injectable()
 export class UnitService {
     
-    private BASE_SERVICE_URL = 'http://localhost:65052/';
-    //private BASE_SERVICE_URL = 'http://summitapi.azurewebsites.net/';
+    //private BASE_SERVICE_URL = 'http://localhost:65052/';
+    private BASE_SERVICE_URL = 'http://summitapi.azurewebsites.net/';
     
     private jwt: string;
     private decodedJwt: string;
@@ -26,37 +26,34 @@ export class UnitService {
         return this.http.get(this.BASE_SERVICE_URL + 'api/units', {
             headers: headers
         })
-        .map( (responseData) => {
-            return responseData.json();
-        })
-        .map((units: Array<any>) => {
+        .map(res => res.json())  //Processes a result from the observable.  ie Fetchs payload of the http.get call.  Transforms raw hhtp response to javascript object
+        .map((units: Array<any>) => {  //Second-level transformation into Value Objects
             let result:Array<Unit> = [];
-            if (units) {
-                console.log(units);
+            if (units) {                
                 units.forEach((unit) => {
-                result.push(
-                    //This maps it to our client side data type
-                    new Unit(unit.UnitID, 
-                            unit.ActivePlateID,
-                            unit.UnitStatusID,
-                            unit.UnitNumber,
-                            unit.Year,
-                            unit.Make,
-                            unit.Model,
-                            unit.Trim,
-                            unit.VIN,
-                            unit.IsPoolUnit,
-                            unit.InServiceDate,
-                            unit.Term,
-                            unit.CostCenter,
-                            unit.FactoryStock,
-                            unit.CreatedByUserID,
-                            unit.CreatedByUserName,
-                            unit.CreatedOn,
-                            unit.DeletedByUserID, 
-                            unit.DeletedByUserName, 
-                            unit.DeletedOn
-                            ));
+                    result.push(
+                        //This maps it to our client side data type
+                        new Unit(unit.UnitID, 
+                                unit.ActivePlateID,
+                                unit.UnitStatusID,
+                                unit.UnitNumber,
+                                unit.Year,
+                                unit.Make,
+                                unit.Model,
+                                unit.Trim,
+                                unit.VIN,
+                                unit.IsPoolUnit,
+                                unit.InServiceDate,
+                                unit.Term,
+                                unit.CostCenter,
+                                unit.FactoryStock,
+                                unit.CreatedByUserID,
+                                unit.CreatedByUserName,
+                                unit.CreatedOn,
+                                unit.DeletedByUserID, 
+                                unit.DeletedByUserName, 
+                                unit.DeletedOn
+                                ));
                 });
             }
             return result;
@@ -101,8 +98,7 @@ export class UnitService {
         });
     }
     
-    createUnit(unit: Unit){
-        console.log("---------------------Create Unit");
+    createUnit(unit: Unit){        
         var headers = new Headers();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
@@ -110,8 +106,7 @@ export class UnitService {
                 
         // create an object for the server must match the binding model for that route 
         // In this case it matches our CreateUnitBindingModel
-        // Sometimes we have to transform data        
-        
+        // Sometimes we have to transform data                
         let unitToCreate = {            
             "ActivePlateID" : unit.activePlateID,
             "UnitStatusID": unit.unitStatusID,
@@ -135,8 +130,7 @@ export class UnitService {
         .map(res => res.json());
     }
     
-    updateUnit(unit: Unit){
-        console.log("---------------------Update Unit");
+    updateUnit(unit: Unit){        
         var headers = new Headers();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
@@ -161,8 +155,7 @@ export class UnitService {
             "CostCenter" : unit.costCenter,
             "FactoryStock" : unit.factoryStock          
         };
-        
-        
+                
         //convert back to server unit type
         return this.http.put(this.BASE_SERVICE_URL + 'api/units/' + unit.unitID, JSON.stringify(unitToUpdate), {
             headers: headers
